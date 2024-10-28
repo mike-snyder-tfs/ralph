@@ -180,8 +180,9 @@ class VirtualServerAdmin(
             return '<a href="{}">{}</a>'.format(
                 parent.get_absolute_url(), parent.hostname
             )
-        except:  # this happens when no parent or parent doesn't have a hostname
+        except:  # noqa  # this happens when no parent or parent doesn't have a hostname
             return '-'
+
 
 class CloudHostTabularInline(RalphTabularInline):
     can_delete = False
