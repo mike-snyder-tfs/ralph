@@ -130,7 +130,7 @@ class VirtualServerAdmin(
     )
     list_display = [
         'hostname', 'type', 'sn', 'service_env', 'configuration_path',
-        'get_parent', 'scan_status', 'scm_status_check'
+        'parent_', 'scan_status', 'scm_status_check'
     ]
     raw_id_fields = ['parent', 'service_env', 'configuration_path']
     fields = [
@@ -174,12 +174,14 @@ class VirtualServerAdmin(
         )
 
     @mark_safe
-    def get_parent(self, obj):
-        if not obj.parent_id:
+    def parent_(self, obj):
+        try:
+            parent = obj.polymorphic_parent
+            return '<a href="{}">{}</a>'.format(
+                parent.get_absolute_url(), parent.hostname
+            )
+        except:  # noqa  # this happens when no parent or parent doesn't have a hostname
             return '-'
-        return '<a href="{}">{}</a>'.format(
-            obj.parent.get_absolute_url(), obj.parent.hostname
-        )
 
 
 class CloudHostTabularInline(RalphTabularInline):
