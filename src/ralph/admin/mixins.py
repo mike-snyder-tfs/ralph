@@ -541,8 +541,9 @@ class BulkEditChangeListMixin(object):
         qs = super().get_queryset(request)
         id_list = request.GET.getlist(BULK_EDIT_VAR_IDS, [])
         if id_list:
-            qs = qs.filter(pk__in=id_list)
-        return qs
+            return self.model.objects.filter(id__in=id_list)
+        else:
+            return qs
 
     def get_list_display(self, request):
         """
