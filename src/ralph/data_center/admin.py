@@ -35,7 +35,7 @@ from ralph.admin.views.extra import RalphDetailViewAdmin
 from ralph.admin.views.main import RalphChangeList
 from ralph.admin.views.multiadd import MulitiAddAdminMixin
 from ralph.assets.invoice_report import AssetInvoiceReportMixin
-from ralph.assets.models.base import BaseObject
+from ralph.assets.models.base import BaseObject, BaseObjectPolymorphicQuerySet
 from ralph.assets.models.components import Ethernet
 from ralph.assets.views import ComponentsAdminView
 from ralph.attachments.admin import AttachmentsMixin
@@ -492,13 +492,25 @@ class DataCenterAssetAdmin(
     )
 
     def get_export_queryset(self, request):
-        # we skip method in RalphAdminImportExportMixin because it doesn't return a queryset
-        # sad :(
-        return super(RalphAdminImportExportMixin, self).get_export_queryset(request).select_related(
-            *self.list_select_related
-        ).polymorphic_prefetch_related(
-            DataCenterAsset=['tags', 'ethernet_set__ipaddress', 'parent__ethernet_set__ipaddress'],
+        qs = (
+            super(RalphAdminImportExportMixin, self)
+            .get_export_queryset(request)
+            .select_related(
+                *self.list_select_related
+            )
         )
+        if isinstance(qs, BaseObjectPolymorphicQuerySet):
+            return qs.polymorphic_prefetch_related(
+                DataCenterAsset=[
+                    'tags',
+                    'ethernet_set__ipaddress',
+                    'parent__ethernet_set__ipaddress'
+                ]
+            )
+        else:
+            return qs.prefetch_related(
+                'tags', 'ethernet_set__ipaddress', 'parent__ethernet_set__ipaddress'
+            )
 
     def get_multiadd_fields(self, obj=None):
         multiadd_fields = [

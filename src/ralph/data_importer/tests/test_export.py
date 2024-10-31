@@ -114,6 +114,16 @@ class DataCenterAssetExporterTestCase(SimulateAdminExportTestCase):
             DataCenterAsset
         ), max_queries=12)
 
+    def test_data_center_asset_export_filtered(self):
+        self._init(10)
+        first_id = next(iter(self.data_center_assets_map.keys()))
+        with CaptureQueriesContext(connections['default']) as cqc:
+            export_data = self._export(
+                DataCenterAsset, filters={'id': first_id}
+            )
+            queries = len(cqc)
+        self.assertEqual(len(export_data.dict), 1)
+        self.assertLessEqual(queries, 10)
 
 class DataCenterAssetExporterTestCaseWithParent(DataCenterAssetExporterTestCase):
     def _init(self, num=10):
