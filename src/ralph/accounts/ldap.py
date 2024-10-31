@@ -68,6 +68,7 @@ def mirror_groups(self):
 
         self._user.groups.set(existing_groups + new_groups)
 
+
 _LDAPUser._mirror_groups_original = _LDAPUser._mirror_groups
 _LDAPUser._mirror_groups = mirror_groups
 

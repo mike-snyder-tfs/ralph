@@ -25,6 +25,7 @@ def build_statsd_client(
         ipv6=ipv6
     )
 
+
 if settings.COLLECT_METRICS and statsd is None:
     statsd = build_statsd_client()
 
