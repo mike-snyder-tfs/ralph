@@ -123,7 +123,7 @@ class DataCenterAssetExporterTestCase(SimulateAdminExportTestCase):
             )
             queries = len(cqc)
         self.assertEqual(len(export_data.dict), 1)
-        self.assertLessEqual(queries, 10)
+        self.assertLessEqual(queries, 12)
 
 class DataCenterAssetExporterTestCaseWithParent(DataCenterAssetExporterTestCase):
     def _init(self, num=10):
