@@ -490,13 +490,6 @@ class DataCenterAssetAdmin(
         }),
     )
 
-    def get_export_queryset(self, request):
-        return DataCenterAsset.polymorphic_objects.select_related(
-            *self.list_select_related
-        ).polymorphic_prefetch_related(
-            DataCenterAsset=['tags', 'ethernet_set__ipaddress', 'parent__ethernet_set__ipaddress'],
-        )
-
     def get_multiadd_fields(self, obj=None):
         multiadd_fields = [
             {'field': 'sn', 'allow_duplicates': False},
