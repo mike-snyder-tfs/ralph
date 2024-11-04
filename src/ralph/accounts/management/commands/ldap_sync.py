@@ -24,6 +24,20 @@ except ImportError:
     ldap_module_exists = False
 
 
+def decode_nested_dict(data):
+    if isinstance(data, dict):
+        return {key: decode_nested_dict(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [decode_nested_dict(element) for element in data]
+    elif isinstance(data, bytes):
+        try:
+            return data.decode('utf-8')
+        except UnicodeDecodeError:
+            return data
+    else:
+        return data
+
+
 def _truncate(field_key, field_name, ldap_dict):
     """
     Truncate user's field when it's longer then default django value, which is
@@ -274,16 +288,8 @@ class Command(BaseCommand):
         """Load users from ldap and populate them. Returns number of users."""
         synced = 0
         for user_dn, ldap_dict in self._get_users():
-            if ldap_dict.get('c'):
-                try:
-                    ldap_dict['c'] = [v.decode('utf-8') for v in ldap_dict['c']]
-                except UnicodeDecodeError:
-                    logger.error(
-                        "Can't decode country %s for user %s",
-                        ldap_dict['c'],
-                        user_dn
-                    )
-                    continue
+            # decode bytes to str
+            ldap_dict = decode_nested_dict(ldap_dict)
             _truncate('sn', 'last_name', ldap_dict)
             user = self._create_or_update_user(user_dn, ldap_dict)
             self.nested_groups.handle(user)
