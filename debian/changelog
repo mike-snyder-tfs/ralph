@@ -1,3 +1,14 @@
+ralph (20241104.1) bionic; urgency=medium
+
+  * Fix method to get limit choices
+  * Fix data center asset export not getting filter from request
+  * Fix format to work with newer flake
+  * Fix prefetches
+  * Make prefetches work for filtered and not filtered export
+  * loosen queries count constraint for export
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Mon, 04 Nov 2024 10:17:53 +0000
+
 ralph (20241029.1) bionic; urgency=medium
 
   [ awieckowski ]
