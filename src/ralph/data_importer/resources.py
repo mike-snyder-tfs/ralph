@@ -306,8 +306,16 @@ class DataCenterAssetResource(ResourceWithPrice, RalphModelResource):
     class Meta:
         model = physical.DataCenterAsset
         select_related = (
+            'model__manufacturer', 'model__category',
             'service_env__service', 'service_env__environment',
             'rack__server_room__data_center',
+            'configuration_path',
+            'property_of',
+            'parent',
+            'budget_info',
+        )
+        prefetch_related = (
+            'tags', 'ethernet_set__ipaddress', 'parent__ethernet_set__ipaddress',
         )
         exclude = ('content_type', 'asset_ptr', 'baseobject_ptr', 'connections')
 

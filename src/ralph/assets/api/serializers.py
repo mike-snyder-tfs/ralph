@@ -317,6 +317,7 @@ class ConfigurationClassSimpleSerializer(RalphAPISerializer):
             'parent'
         )
 
+
 # TODO: Is there a better way to make it work since drf 3.5?
 del ConfigurationClassSimpleSerializer._declared_fields['tags']
 

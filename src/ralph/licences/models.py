@@ -111,6 +111,7 @@ class LicencesUsedFreeManager(models.Manager):
             }
         )
 
+
 LICENCES_RELATED_OBJECTS_PREFETCH_RELATED = [
     'users',
     # prefetch all baseobjects related with licence; this allows to call

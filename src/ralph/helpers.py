@@ -41,6 +41,7 @@ def generate_pdf_response(pdf_data, file_name):
     )
     return response
 
+
 CACHE_DEFAULT = object()
 
 
