@@ -421,9 +421,6 @@ class RalphAdminImportExportMixin(ImportExportModelAdmin):
         )
         if resource_prefetch_related:
             queryset = queryset.prefetch_related(*resource_prefetch_related)
-        # cast to list to consider all prefetch_related (django-import-export
-        # use queryset.iterator() to "save memory", but then for every row
-        # sql queries are made to fetch all m2m relations)
         return list(queryset)
 
     def get_export_resource_class(self):
@@ -541,8 +538,9 @@ class BulkEditChangeListMixin(object):
         qs = super().get_queryset(request)
         id_list = request.GET.getlist(BULK_EDIT_VAR_IDS, [])
         if id_list:
-            qs = qs.filter(pk__in=id_list)
-        return qs
+            return self.model.objects.filter(id__in=id_list)
+        else:
+            return qs
 
     def get_list_display(self, request):
         """

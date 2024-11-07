@@ -53,9 +53,9 @@ class TypeFromContentTypeSerializerMixin(RalphAPISerializer):
 
 class OwnersFromServiceEnvSerializerMixin(RalphAPISerializer):
     business_owners = SimpleRalphUserSerializer(
-        many=True, source='service_env.service.business_owners')
+        many=True, source='service_env.service.business_owners', required=False)
     technical_owners = SimpleRalphUserSerializer(
-        many=True, source='service_env.service.technical_owners')
+        many=True, source='service_env.service.technical_owners', required=False)
 
 
 class BusinessSegmentSerializer(RalphAPISerializer):
@@ -316,6 +316,7 @@ class ConfigurationClassSimpleSerializer(RalphAPISerializer):
             'content_type', 'configuration_path',
             'parent'
         )
+
 
 # TODO: Is there a better way to make it work since drf 3.5?
 del ConfigurationClassSimpleSerializer._declared_fields['tags']

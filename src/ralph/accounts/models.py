@@ -102,7 +102,7 @@ class RalphUser(
     )
     department = models.CharField(
         verbose_name=_('department'),
-        max_length=64,
+        max_length=128,
         blank=True,
     )
     manager = models.CharField(

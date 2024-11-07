@@ -232,6 +232,9 @@ class BaseObjectForeignKey(models.ForeignKey):
     def limit_choices_to(self):
         return self.limit_choices()
 
+    def get_limit_choices_to(self):
+        return self.limit_choices()
+
     def limit_choices(self):
         """
         Add limit_choices_to search by content_type for models

@@ -1,3 +1,50 @@
+ralph (20241104.2) bionic; urgency=medium
+
+  [ awieckowski ]
+  * Increase max user department field length
+  * Add missing migration
+
+  [ Paweł Szulc ]
+  * Fix ldap sync when bytes received
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Mon, 04 Nov 2024 13:06:26 +0000
+
+ralph (20241104.1) bionic; urgency=medium
+
+  * Fix method to get limit choices
+  * Fix data center asset export not getting filter from request
+  * Fix format to work with newer flake
+  * Fix prefetches
+  * Make prefetches work for filtered and not filtered export
+  * loosen queries count constraint for export
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Mon, 04 Nov 2024 10:17:53 +0000
+
+ralph (20241029.1) bionic; urgency=medium
+
+  [ awieckowski ]
+  * Fix LDAP Groups sync
+
+  [ Paweł Szulc ]
+  * Fix bulk edit for some models
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Tue, 29 Oct 2024 13:00:03 +0000
+
+ralph (20241028.1) bionic; urgency=medium
+
+  * Fix virtual server - hypervisor
+  * Revert remove barcode from factory
+  * Fix virtual server - service env optional
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Mon, 28 Oct 2024 15:23:53 +0000
+
+ralph (20241023.1) bionic; urgency=medium
+
+  * Updated changelog for 20241011.1 version.
+  * Fix data not JSON-serializable
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Wed, 23 Oct 2024 10:29:45 +0000
+
 ralph (20241011.1) bionic; urgency=medium
 
   [ Paweł Szulc ]

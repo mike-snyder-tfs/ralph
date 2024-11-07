@@ -5,6 +5,7 @@ def only_true(request):
     '''For django debug toolbar.'''
     return True
 
+
 DEBUG = True
 
 INSTALLED_APPS = INSTALLED_APPS + (

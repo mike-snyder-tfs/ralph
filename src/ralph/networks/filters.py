@@ -24,6 +24,8 @@ def get_private_network_filter():
         max_ip = int(network.broadcast_address)
         filter_ |= Q(min_ip__gte=min_ip, max_ip__lte=max_ip)
     return filter_
+
+
 PRIVATE_NETWORK_FILTER = get_private_network_filter()
 
 
