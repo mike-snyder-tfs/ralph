@@ -11,7 +11,7 @@ from ralph.assets import models
 from ralph.assets.api import serializers
 from ralph.assets.api.filters import NetworkableObjectFilters
 from ralph.assets.models import BaseObject
-from ralph.data_center.models import Cluster, DataCenterAsset, DCHost
+from ralph.data_center.models import Cluster, DataCenterAsset
 from ralph.lib.api.utils import renderer_classes_without_form
 from ralph.licences.api import BaseObjectLicenceViewSet
 from ralph.licences.models import BaseObjectLicence
@@ -317,7 +317,7 @@ class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
                 elif isinstance(obj_, Cluster):
                     from ralph.data_center.api.serializers import ClusterSerializer
                     return ClusterSerializer
-            except AssertionError:  # for some reason when opening browsable api this raises exception
+            except AssertionError:  # for some reason when opening browsable api this raises
                 pass
         return serializers.DCHostSerializer
 
