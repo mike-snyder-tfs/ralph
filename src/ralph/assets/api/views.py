@@ -11,7 +11,8 @@ from ralph.assets import models
 from ralph.assets.api import serializers
 from ralph.assets.api.filters import NetworkableObjectFilters
 from ralph.assets.models import BaseObject
-from ralph.data_center.models import Cluster, DataCenterAsset
+from ralph.data_center.models import Cluster, DataCenterAsset, DCHost
+from ralph.lib.api.utils import renderer_classes_without_form
 from ralph.licences.api import BaseObjectLicenceViewSet
 from ralph.licences.models import BaseObjectLicence
 from ralph.networks.models import IPAddress
@@ -258,9 +259,10 @@ class DCHostFilterSet(NetworkableObjectFilters):
 # TODO: move to data_center and use DCHost proxy model
 class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
     queryset = (
-        BaseObject.polymorphic_objects.dc_hosts()
+        BaseObject.polymorphic_objects
     )
     serializer_class = serializers.DCHostSerializer
+    renderer_classes = renderer_classes_without_form(RalphAPIViewSet.renderer_classes)
     http_method_names = ["get", "options", "head", "patch", "post"]
     filter_fields = [
         "id",
@@ -301,24 +303,27 @@ class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
 
     def get_serializer_class(self, *args, **kwargs):
         if self.request.method not in SAFE_METHODS:
-            obj_ = self.get_object()
-            if isinstance(obj_, VirtualServer):
-                from ralph.virtual.api import VirtualServerSaveSerializer
-                return VirtualServerSaveSerializer
-            elif isinstance(obj_, DataCenterAsset):
-                from ralph.data_center.api.serializers import DataCenterAssetSaveSerializer
-                return DataCenterAssetSaveSerializer
-            elif isinstance(obj_, CloudHost):
-                from ralph.virtual.api import SaveCloudHostSerializer
-                return SaveCloudHostSerializer
-            elif isinstance(obj_, Cluster):
-                from ralph.data_center.api.serializers import ClusterSerializer
-                return ClusterSerializer
+            try:
+                obj_ = self.get_object()
+                if isinstance(obj_, VirtualServer):
+                    from ralph.virtual.api import VirtualServerSaveSerializer
+                    return VirtualServerSaveSerializer
+                elif isinstance(obj_, DataCenterAsset):
+                    from ralph.data_center.api.serializers import DataCenterAssetSaveSerializer
+                    return DataCenterAssetSaveSerializer
+                elif isinstance(obj_, CloudHost):
+                    from ralph.virtual.api import SaveCloudHostSerializer
+                    return SaveCloudHostSerializer
+                elif isinstance(obj_, Cluster):
+                    from ralph.data_center.api.serializers import ClusterSerializer
+                    return ClusterSerializer
+            except AssertionError:  # for some reason when opening browsable api this raises exception
+                pass
         return serializers.DCHostSerializer
 
     def get_queryset(self):
         return (
-            self.queryset
+            self.queryset.dc_hosts()
             .select_related(*self.select_related)
             .polymorphic_select_related(Cluster=['type'])
             .polymorphic_prefetch_related(
