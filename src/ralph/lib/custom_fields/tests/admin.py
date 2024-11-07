@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from ..admin import CustomFieldValueAdminMixin
+from ..admin import CustomFieldAdmin, CustomFieldValueAdminMixin
+from ..models import CustomField
 from .models import ModelA, ModelB, SomeModel
 
 site = admin.AdminSite(name="cf_admin")
@@ -24,3 +25,4 @@ class ModelBAdmin(CustomFieldValueAdminMixin, admin.ModelAdmin):
 site.register(SomeModel, SomeModelAdmin)
 site.register(ModelA, ModelAAdmin)
 site.register(ModelB, ModelBAdmin)
+site.register(CustomField, CustomFieldAdmin)
