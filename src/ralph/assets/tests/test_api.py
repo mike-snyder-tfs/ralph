@@ -1089,6 +1089,31 @@ class DCHostAPITests(RalphAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 1)
 
+    def test_patch_dchost_virtual_server(self):
+        new_hypervisor = DataCenterAssetFullFactory()
+        url = reverse('dchost-detail', args=(self.virtual.id,))
+        data = {
+            'hostname': 'new-hostname',
+            'hypervisor': new_hypervisor.id,
+        }
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.virtual.refresh_from_db()
+        self.assertEqual(self.virtual.hostname, 'new-hostname')
+        self.assertEqual(self.virtual.parent.id, new_hypervisor.id)
+
+    def test_patch_dchost_cloudhost(self):
+        new_hypervisor = DataCenterAssetFullFactory()
+        url = reverse('dchost-detail', args=(self.cloud_host.id,))
+        data = {
+            'hostname': 'new-hostname',
+            'hypervisor': new_hypervisor.id,
+        }
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.cloud_host.refresh_from_db()
+        self.assertEqual(self.cloud_host.hostname, 'new-hostname')
+        self.assertEqual(self.cloud_host.hypervisor.id, new_hypervisor.id)
 
 class ConfigurationModuleAPITests(RalphAPITestCase):
     def setUp(self):
