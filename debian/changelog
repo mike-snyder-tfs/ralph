@@ -1,3 +1,12 @@
+ralph (20241108.1) bionic; urgency=medium
+
+  * Allow updating dchosts via dchost-list endpoint
+  * Fix browsable api
+  * Fix flake
+  * Add 404 if no serializer found for dc-hosts endpoint
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Fri, 08 Nov 2024 11:09:13 +0000
+
 ralph (20241104.2) bionic; urgency=medium
 
   [ awieckowski ]
