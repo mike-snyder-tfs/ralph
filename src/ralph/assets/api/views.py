@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import django_filters
 from django.db.models import Prefetch
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.permissions import SAFE_METHODS
 
 from ralph.api import RalphAPIViewSet
@@ -317,6 +317,8 @@ class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
                 elif isinstance(obj_, Cluster):
                     from ralph.data_center.api.serializers import ClusterSerializer
                     return ClusterSerializer
+                else:
+                    raise NotFound()
             except AssertionError:  # for some reason when opening browsable api this raises
                 pass
         return serializers.DCHostSerializer
