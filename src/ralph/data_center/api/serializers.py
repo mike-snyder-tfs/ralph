@@ -122,7 +122,7 @@ class RackSerializer(RalphAPISerializer):
 class DataCenterAssetSimpleSerializer(RalphAPISerializer):
     class Meta:
         model = DataCenterAsset
-        fields = ['hostname', 'url']
+        fields = ['id', 'hostname', 'url']
         _skip_tags_field = True
 
 
@@ -164,6 +164,8 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
         )
 
     def get_related_hosts(self, obj):
+        if hasattr(obj, 'content_type'):
+            obj = obj.content_type.get_object_for_this_type(pk=obj.pk)
         return {
             "virtual_servers": self._get_virtual_servers(obj),
             "physical_servers": self._get_physical_servers(obj),
