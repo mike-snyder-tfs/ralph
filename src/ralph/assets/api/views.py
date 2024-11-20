@@ -4,6 +4,7 @@ from django.db.models import Prefetch
 from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.permissions import SAFE_METHODS
 
+import ralph.assets.api.serializers_dchosts
 from ralph.api import RalphAPIViewSet
 from ralph.api.filters import BooleanFilter
 from ralph.api.utils import PolymorphicViewSetMixin
@@ -261,7 +262,7 @@ class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
     queryset = (
         BaseObject.polymorphic_objects
     )
-    serializer_class = serializers.DCHostSerializer
+    serializer_class = ralph.assets.api.serializers_dchosts.DCHostSerializer
     renderer_classes = renderer_classes_without_form(RalphAPIViewSet.renderer_classes)
     http_method_names = ["get", "options", "head", "patch", "post"]
     filter_fields = [
@@ -321,7 +322,7 @@ class DCHostViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
                     raise NotFound()
             except AssertionError:  # for some reason when opening browsable api this raises
                 pass
-        return serializers.DCHostSerializer
+        return ralph.assets.api.serializers_dchosts.DCHostSerializer
 
     def get_queryset(self):
         return (
