@@ -81,9 +81,10 @@
                 var group_id = $(this).data('group-id'),
                     prefix = $(this).data('prefix'),
                     add_text = $(this).data('add-text'),
-                    delete_text = $(this).data('delete-text');
+                    delete_text = $(this).data('delete-text'),
+                    selector = "#" + group_id + "-group .tabular.inline-related tbody tr";
                 (function($) {
-                  $("#" + group_id + "-group .tabular.inline-related tbody tr").tabularFormset({
+                  $(selector).tabularFormset(selector, {
                       prefix: prefix,
                       addText: add_text,
                       deleteText: delete_text
