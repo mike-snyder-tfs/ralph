@@ -1,3 +1,9 @@
+ralph (20241125.1) bionic; urgency=medium
+
+  * Fix debian package (#3870)
+
+ -- Olga Matyla <olga.matyla@allegro.com>  Mon, 25 Nov 2024 10:48:43 +0000
+
 ralph (20241122.1) bionic; urgency=medium
 
   [ Paweł Szulc ]
