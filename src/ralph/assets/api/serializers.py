@@ -37,7 +37,6 @@ from ralph.assets.models.components import (
     Processor
 )
 from ralph.configuration_management.api import SCMInfoSerializer
-from ralph.data_center.models import DCHost
 from ralph.lib.custom_fields.api import WithCustomFieldsSerializerMixin
 from ralph.licences.api_simple import SimpleBaseObjectLicenceSerializer
 from ralph.networks.api_simple import IPAddressSimpleSerializer
@@ -458,40 +457,3 @@ class SecurityScanField(serializers.Field):
     def to_representation(self, value):
         if value and value.pk:
             return SecurityScanSerializer().to_representation(value)
-
-
-class DCHostSerializer(ComponentSerializerMixin, BaseObjectSerializer):
-    hostname = fields.CharField()
-    securityscan = SecurityScanField()
-
-    class Meta:
-        model = DCHost
-        fields = [
-            'id',
-            'url',
-            'ethernet',
-            'ipaddresses',
-            'custom_fields',
-            'tags',
-            'securityscan',
-            'object_type',
-            '__str__',
-            'service_env', 'configuration_path',
-            'hostname',
-            'created', 'modified', 'remarks', 'parent',
-            'configuration_variables',
-        ]
-
-
-class DCHostPhysicalSerializer(DCHostSerializer):
-    model = serializers.SerializerMethodField()
-
-    class Meta:
-        model = BaseObject
-        fields = DCHostSerializer.Meta.fields + ['model']
-
-    def get_model(self, obj):
-        try:
-            return str(obj.model)
-        except AttributeError:
-            return None

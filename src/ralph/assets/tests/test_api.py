@@ -971,6 +971,12 @@ class DCHostAPITests(RalphAPITestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_get_dc_host_cloud_host_details(self):
+        url = reverse('dchost-detail', args=(self.cloud_host.pk,))
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json()['hypervisor']['hostname'], self.dc_asset.hostname)
+
     def test_filter_by_type_dc_asset(self):
         url = '{}?{}'.format(
             reverse('dchost-list'),
