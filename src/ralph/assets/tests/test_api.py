@@ -958,8 +958,8 @@ class DCHostAPITests(RalphAPITestCase):
         VirtualServerFullFactory.create_batch(20, parent=dc_assets[0])
         CloudHostFullFactory.create_batch(20, hypervisor=dc_assets[0])
         url = reverse('dchost-list') + "?limit=100"
-        with self.assertNumQueries(31):
-            response = self.client.get(url, format='json')
+        with self.assertQueriesMoreOrLess(30, plus_minus=1):
+            response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 63)
 
@@ -970,6 +970,12 @@ class DCHostAPITests(RalphAPITestCase):
         url = reverse('dchost-detail', args=(dc_asset.pk,))
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_dc_host_cloud_host_details(self):
+        url = reverse('dchost-detail', args=(self.cloud_host.pk,))
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json()['hypervisor']['hostname'], self.dc_asset.hostname)
 
     def test_filter_by_type_dc_asset(self):
         url = '{}?{}'.format(

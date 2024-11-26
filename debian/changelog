@@ -1,3 +1,25 @@
+ralph (20241122.1) bionic; urgency=medium
+
+  [ Paweł Szulc ]
+  * Add hypervisor fields to dc-hosts Cloud Host response
+  * Add select related to limit queries
+
+  [ Olga Matyla ]
+  * Fix Service environment inline (#3868)
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Fri, 22 Nov 2024 11:45:41 +0000
+
+ralph (20241118.1) bionic; urgency=medium
+
+  [ Olga Matyla ]
+  * Add property_of to invoice report (#3864)
+  * Fix selected count (#3865)
+
+  [ Paweł Szulc ]
+  * Fix renderer classes ordering
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Mon, 18 Nov 2024 12:48:57 +0000
+
 ralph (20241108.1) bionic; urgency=medium
 
   * Allow updating dchosts via dchost-list endpoint
