@@ -130,36 +130,21 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
     securityscan = SecurityScanSerializer()
     related_hosts = serializers.SerializerMethodField()
 
-    def _get_serialized_sublist(self, full_list, serializer_class):
-        return serializer_class(
-            full_list,
-            many=True, context=self.context
-        ).data
-
-    def _get_physical_servers(self, obj):
-        return self._get_serialized_sublist(
-            obj.physical_servers,
-            DataCenterAssetSimpleSerializer
-        )
-
-    def _get_virtual_servers(self, obj):
-        from ralph.virtual.api import VirtualServerSimpleSerializer
-        return self._get_serialized_sublist(
-            obj.virtual_servers,
-            VirtualServerSimpleSerializer
-        )
-
-    def _get_cloud_hosts(self, obj):
-        from ralph.virtual.api import CloudHostSimpleSerializer
-        return self._get_serialized_sublist(
-            obj.cloud_hosts,
-            CloudHostSimpleSerializer)
-
     def get_related_hosts(self, obj):
+        from ralph.virtual.api import CloudHostSimpleSerializer
+        from ralph.virtual.api import VirtualServerSimpleSerializer
+        # attributes "virtual_servers", "physical_servers" and "cloud_hosts"
+        # are custom prefetches, see DataCenterAssetViewSet
         return {
-            "virtual_servers": self._get_virtual_servers(obj),
-            "physical_servers": self._get_physical_servers(obj),
-            "cloud_hosts": self._get_cloud_hosts(obj)
+            "virtual_servers": VirtualServerSimpleSerializer(
+                obj.virtual_servers, many=True, context=self.context
+            ).data,
+            "physical_servers": DataCenterAssetSimpleSerializer(
+                obj.physical_servers, many=True, context=self.context
+            ).data,
+            "cloud_hosts": CloudHostSimpleSerializer(
+                obj.cloud_hosts, many=True, context=self.context
+            ).data,
         }
 
     class Meta(AssetSerializer.Meta):
