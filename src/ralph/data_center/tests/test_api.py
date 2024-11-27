@@ -132,6 +132,51 @@ class DataCenterAssetAPITests(RalphAPITestCase):
             response.data['related_hosts']['physical_servers'][0]['hostname'],
             dc_asset_4.hostname
         )
+    def test_get_data_center_asset_list_related_hosts(self):
+        dc_asset_5 = DataCenterAssetFullFactory()
+        cloud_host = CloudHostFactory(
+            hypervisor=dc_asset_5
+        )
+        virtual_server = VirtualServerFactory(
+            parent=dc_asset_5
+        )
+        virtual_server_2 = VirtualServerFactory(
+            parent=dc_asset_5,
+            hostname='random_test_hostname'
+        )
+        dc_asset_6 = DataCenterAssetFullFactory(
+            parent=dc_asset_5
+        )
+        url = f"{reverse('datacenterasset-list')}?hostname={dc_asset_5.hostname}"
+        response = self.client.get(url, format='json')
+        self.assertEqual(
+            len(response.data['results']), 1
+        )
+        self.assertEqual(
+            len(response.data['results'][0]['related_hosts']['cloud_hosts']), 1
+        )
+        self.assertEqual(
+            len(response.data['results'][0]['related_hosts']['virtual_servers']), 2
+        )
+        self.assertIn(
+            response.data['results'][0]['related_hosts']['virtual_servers'][0]['hostname'],
+            (virtual_server.hostname, virtual_server_2.hostname)
+        )
+        self.assertIn(
+            response.data['results'][0]['related_hosts']['virtual_servers'][1]['hostname'],
+            (virtual_server.hostname, virtual_server_2.hostname)
+        )
+        self.assertEqual(
+            response.data['results'][0]['related_hosts']['cloud_hosts'][0]['hostname'],
+            cloud_host.hostname
+        )
+        self.assertEqual(
+            len(response.data['results'][0]['related_hosts']['physical_servers']), 1
+        )
+        self.assertEqual(
+            response.data['results'][0]['related_hosts']['physical_servers'][0]['hostname'],
+            dc_asset_6.hostname
+        )
 
     def test_create_data_center_asset(self):
         url = reverse('datacenterasset-list')

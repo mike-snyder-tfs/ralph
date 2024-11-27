@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.contenttypes.models import ContentType
 from rest_framework import serializers
 
 from ralph.api import RalphAPISerializer
@@ -27,7 +26,6 @@ from ralph.data_center.models import (
     VIP
 )
 from ralph.security.api import SecurityScanSerializer
-from ralph.virtual.models import VirtualServer
 
 
 class ClusterTypeSerializer(RalphAPISerializer):
@@ -122,7 +120,7 @@ class RackSerializer(RalphAPISerializer):
 class DataCenterAssetSimpleSerializer(RalphAPISerializer):
     class Meta:
         model = DataCenterAsset
-        fields = ['hostname', 'url']
+        fields = ['id', 'hostname', 'url']
         _skip_tags_field = True
 
 
@@ -132,42 +130,21 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
     securityscan = SecurityScanSerializer()
     related_hosts = serializers.SerializerMethodField()
 
-    def _get_serialized_sublist(self, full_list, serializer_class, cond):
-        return serializer_class(
-            [elem for elem in full_list if cond(elem)],
-            many=True, context=self.context
-        ).data
-
-    def _get_physical_servers(self, obj):
-        dca = ContentType.objects.get_for_model(DataCenterAsset)
-        return self._get_serialized_sublist(
-            obj.children.all(),
-            DataCenterAssetSimpleSerializer,
-            lambda child: child.content_type == dca
-        )
-
-    def _get_virtual_servers(self, obj):
-        from ralph.virtual.api import VirtualServerSimpleSerializer
-        vs = ContentType.objects.get_for_model(VirtualServer)
-        return self._get_serialized_sublist(
-            obj.children.all(),
-            VirtualServerSimpleSerializer,
-            lambda child: child.content_type == vs
-        )
-
-    def _get_cloud_hosts(self, obj):
-        from ralph.virtual.api import CloudHostSimpleSerializer
-        return self._get_serialized_sublist(
-            obj.cloudhost_set.all(),
-            CloudHostSimpleSerializer,
-            lambda host: True
-        )
-
     def get_related_hosts(self, obj):
+        from ralph.virtual.api import CloudHostSimpleSerializer
+        from ralph.virtual.api import VirtualServerSimpleSerializer
+        # attributes "virtual_servers", "physical_servers" and "cloud_hosts"
+        # are custom prefetches, see DataCenterAssetViewSet
         return {
-            "virtual_servers": self._get_virtual_servers(obj),
-            "physical_servers": self._get_physical_servers(obj),
-            "cloud_hosts": self._get_cloud_hosts(obj)
+            "virtual_servers": VirtualServerSimpleSerializer(
+                obj.virtual_servers, many=True, context=self.context
+            ).data,
+            "physical_servers": DataCenterAssetSimpleSerializer(
+                obj.physical_servers, many=True, context=self.context
+            ).data,
+            "cloud_hosts": CloudHostSimpleSerializer(
+                obj.cloud_hosts, many=True, context=self.context
+            ).data,
         }
 
     class Meta(AssetSerializer.Meta):

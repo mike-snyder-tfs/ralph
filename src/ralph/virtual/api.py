@@ -49,7 +49,7 @@ class CloudHostSimpleSerializer(BaseObjectSerializer):
 
     class Meta:
         model = CloudHost
-        fields = ['hostname', 'ip_addresses', 'url']
+        fields = ['id', 'hostname', 'ip_addresses', 'url']
 
 
 class CloudProjectSimpleSerializer(BaseObjectSerializer):
@@ -152,7 +152,7 @@ class VirtualServerTypeSerializer(RalphAPISerializer):
 class VirtualServerSimpleSerializer(BaseObjectSerializer):
     class Meta(BaseObjectSerializer.Meta):
         model = VirtualServer
-        fields = ['hostname', 'url']
+        fields = ['id', 'hostname', 'url']
         _skip_tags_field = True
         exclude = None
 

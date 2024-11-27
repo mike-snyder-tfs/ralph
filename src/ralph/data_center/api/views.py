@@ -42,6 +42,7 @@ from ralph.data_center.models import (
     ServerRoom,
     VIP
 )
+from ralph.virtual.models import CloudHost, VirtualServer
 
 
 class DataCenterAssetFilterSet(NetworkableObjectFilters):
@@ -50,7 +51,7 @@ class DataCenterAssetFilterSet(NetworkableObjectFilters):
 
 
 class DataCenterAssetViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
-    queryset = DataCenterAsset.polymorphic_objects.all()
+    queryset = DataCenterAsset.objects.all()
     serializer_class = DataCenterAssetSerializer
     save_serializer_class = DataCenterAssetSaveSerializer
     select_related = DataCenterAssetAdmin.list_select_related + [
@@ -62,12 +63,25 @@ class DataCenterAssetViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
         'asset_ptr',
     ]
     prefetch_related = base_object_descendant_prefetch_related + [
-        'children',
+        Prefetch(
+            'children',
+            queryset=VirtualServer.objects.select_related('parent'),
+            to_attr='virtual_servers'
+        ),
+        Prefetch(
+            'children',
+            queryset=DataCenterAsset.objects.select_related('parent'),
+            to_attr='physical_servers'
+        ),
         'rack__server_room__data_center',
         'connections',
         'tags',
         'memory_set',
-        'cloudhost_set',
+        Prefetch(
+            'cloudhost_set',
+            queryset=CloudHost.objects.select_related('parent'),
+            to_attr='cloud_hosts'
+        ),
         Prefetch(
             'ethernet_set',
             queryset=Ethernet.objects.select_related('ipaddress')
@@ -95,11 +109,8 @@ class DataCenterAssetViewSet(BaseObjectViewSetMixin, RalphAPIViewSet):
             ConfigurationModule,
             ServiceEnvironment
         )
-        return (
-            DataCenterAsset.polymorphic_objects
-            .select_related(*self.select_related)
-            .polymorphic_prefetch_related(DataCenterAsset=self.prefetch_related)
-        )
+        qs = super().get_queryset()
+        return qs
 
 
 class AccessoryViewSet(RalphAPIViewSet):

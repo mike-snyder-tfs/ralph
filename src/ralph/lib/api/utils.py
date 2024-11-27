@@ -120,7 +120,10 @@ class OnlyRawBrowsableAPIRenderer(NoFiltersBrowsableAPIRenderer):
 
 
 def renderer_classes_without_form(renderer_classes):
-    return [OnlyRawBrowsableAPIRenderer] + [
-        rc for rc in renderer_classes
-        if not isinstance(rc(), BrowsableAPIRenderer)
-    ]
+    def _gen():
+        for rc in renderer_classes:
+            if not isinstance(rc(), BrowsableAPIRenderer):
+                yield rc
+            else:
+                yield OnlyRawBrowsableAPIRenderer
+    return [rc for rc in _gen()]
