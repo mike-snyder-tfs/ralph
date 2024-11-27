@@ -1,3 +1,14 @@
+ralph (20241127.1) bionic; urgency=medium
+
+  [ Olga Matyla ]
+  * Fix related hosts
+
+  [ Paweł Szulc ]
+  * Fix related hosts
+  * Simplify data center asset serializer
+
+ -- Paweł Szulc <pawel.szulc@allegro.com>  Wed, 27 Nov 2024 09:18:05 +0000
+
 ralph (20241125.1) bionic; urgency=medium
 
   * Fix debian package (#3870)
