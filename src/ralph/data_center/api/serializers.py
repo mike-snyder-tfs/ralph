@@ -9,7 +9,7 @@ from ralph.assets.api.serializers import (
     BaseObjectSerializer,
     ComponentSerializerMixin,
     NetworkComponentSerializerMixin,
-    OwnersFromServiceEnvSerializerMixin
+    OwnersFromServiceEnvSerializerMixin,
 )
 from ralph.configuration_management.api import SCMInfoSerializer
 from ralph.data_center.models import (
@@ -23,7 +23,7 @@ from ralph.data_center.models import (
     Rack,
     RackAccessory,
     ServerRoom,
-    VIP
+    VIP,
 )
 from ralph.security.api import SecurityScanSerializer
 
@@ -38,37 +38,39 @@ class ClusterTypeSerializer(RalphAPISerializer):
 class ClusterSimpleSerializer(BaseObjectSerializer):
     class Meta(BaseObjectSerializer.Meta):
         model = Cluster
-        exclude = ('content_type',)
+        exclude = ("content_type",)
         depth = 1
 
 
 class BaseObjectClusterSimpleSerializer(RalphAPISerializer):
     class Meta:
         model = BaseObjectCluster
-        fields = ('id', 'url', 'base_object', 'is_master')
+        fields = ("id", "url", "base_object", "is_master")
 
 
 class BaseObjectClusterSerializer(RalphAPISerializer):
     class Meta:
         model = BaseObjectCluster
-        fields = ('id', 'url', 'base_object', 'is_master', 'cluster')
+        fields = ("id", "url", "base_object", "is_master", "cluster")
 
 
 class ClusterSerializer(
     NetworkComponentSerializerMixin,
     OwnersFromServiceEnvSerializerMixin,
-    ClusterSimpleSerializer
+    ClusterSimpleSerializer,
 ):
     base_objects = BaseObjectClusterSimpleSerializer(
-        many=True, read_only=True, source='baseobjectcluster_set'
+        many=True, read_only=True, source="baseobjectcluster_set"
     )
     masters = serializers.HyperlinkedRelatedField(
-        many=True, view_name='baseobject-detail', read_only=True,
-        source='get_masters'
+        many=True, view_name="baseobject-detail", read_only=True, source="get_masters"
     )
 
     class Meta(ClusterSimpleSerializer.Meta):
-        exclude = ('parent', 'content_type',)
+        exclude = (
+            "parent",
+            "content_type",
+        )
 
 
 class DataCenterSerializer(RalphAPISerializer):
@@ -92,7 +94,7 @@ class AccessorySerializer(RalphAPISerializer):
 
 
 class RackAccessorySerializer(RalphAPISerializer):
-    name = serializers.ReadOnlyField(source='accessory.name')
+    name = serializers.ReadOnlyField(source="accessory.name")
 
     class Meta:
         model = RackAccessory
@@ -103,12 +105,12 @@ class SimpleRackSerializer(RalphAPISerializer):
     class Meta:
         model = Rack
         depth = 2
-        exclude = ('accessories',)
+        exclude = ("accessories",)
 
 
 class RackSerializer(RalphAPISerializer):
     accessories = RackAccessorySerializer(
-        read_only=True, many=True, source='rackaccessory_set'
+        read_only=True, many=True, source="rackaccessory_set"
     )
 
     class Meta(SimpleRackSerializer.Meta):
@@ -120,7 +122,7 @@ class RackSerializer(RalphAPISerializer):
 class DataCenterAssetSimpleSerializer(RalphAPISerializer):
     class Meta:
         model = DataCenterAsset
-        fields = ['id', 'hostname', 'url']
+        fields = ["id", "hostname", "url"]
         _skip_tags_field = True
 
 
@@ -133,6 +135,7 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
     def get_related_hosts(self, obj):
         from ralph.virtual.api import CloudHostSimpleSerializer
         from ralph.virtual.api import VirtualServerSimpleSerializer
+
         # attributes "virtual_servers", "physical_servers" and "cloud_hosts"
         # are custom prefetches, see DataCenterAssetViewSet
         return {
@@ -154,9 +157,7 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
 
 class DataCenterAssetSaveSerializer(RalphAPISaveSerializer):
     rack = serializers.PrimaryKeyRelatedField(
-        allow_null=False,
-        required=True,
-        queryset=Rack.objects.all()
+        allow_null=False, required=True, queryset=Rack.objects.all()
     )
 
     class Meta:
