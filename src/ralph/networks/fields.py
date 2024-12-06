@@ -28,7 +28,7 @@ class IPNetwork(CharField):
             max_length=MAX_NETWORK_ADDRESS_LENGTH
         ).db_type(connection)
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, connection, *_, **__):
         if value is None:
             return value
         return ipaddress.ip_network(value)
