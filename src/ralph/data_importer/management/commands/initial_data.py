@@ -1,7 +1,7 @@
 import ipaddress
 
 from django.contrib.auth import get_user_model
-from django.core.management import BaseCommand, call_command, CommandError
+from django.core.management import BaseCommand, CommandError, call_command
 from django.db import transaction
 
 from ralph.accounts.tests.factories import RegionFactory

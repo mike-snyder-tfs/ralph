@@ -2,7 +2,7 @@
 import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
-from enum import auto, Enum
+from enum import Enum, auto
 from functools import lru_cache
 
 from django.conf import settings

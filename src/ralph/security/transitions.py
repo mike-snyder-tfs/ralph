@@ -11,7 +11,6 @@ from ralph.data_center.models import DataCenterAsset
 from ralph.lib.transitions.decorators import transition_action
 from ralph.virtual.models import CloudHost, VirtualServer
 
-
 HOST_MODELS = [DataCenterAsset, CloudHost, VirtualServer]
 
 

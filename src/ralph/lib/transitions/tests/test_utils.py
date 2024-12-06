@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from ralph.lib.transitions.utils import _sort_graph_topologically, CycleError
+from ralph.lib.transitions.utils import CycleError, _sort_graph_topologically
 
 
 class TopologicalSortTest(TestCase):

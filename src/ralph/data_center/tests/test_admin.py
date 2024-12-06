@@ -3,7 +3,7 @@ from unittest import mock
 from django.contrib.auth import get_user_model
 from django.core import mail
 from django.db import connection, transaction
-from django.test import override_settings, RequestFactory, TransactionTestCase
+from django.test import RequestFactory, TransactionTestCase, override_settings
 
 from ralph.accounts.tests.factories import UserFactory
 from ralph.assets.tests.factories import ServiceEnvironmentFactory, ServiceFactory

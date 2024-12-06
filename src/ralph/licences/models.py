@@ -19,7 +19,6 @@ from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, NamedMixin, PriceMixi
 from ralph.lib.permissions.models import PermByFieldMixin
 from ralph.lib.polymorphic.models import PolymorphicQuerySet
 
-
 _SELECT_USED_LICENCES_QUERY = """
     SELECT COALESCE(SUM({assignment_table}.{quantity_column}), 0)
     FROM {assignment_table}

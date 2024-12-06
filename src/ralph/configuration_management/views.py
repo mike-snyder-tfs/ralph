@@ -14,7 +14,6 @@ from ralph.configuration_management.models import SCMCheckResult
 # NOTE(romcheg): These functions could be moved to a common place
 from ralph.security.views import _linkify, _url_name_for_change_view
 
-
 logger = logging.getLogger(__name__)
 
 

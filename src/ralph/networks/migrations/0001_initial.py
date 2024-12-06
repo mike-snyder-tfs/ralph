@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-import ralph.networks.fields
-import ralph.lib.mixins.fields
 import django.db.models.deletion
-import ralph.networks.models.networks
-import ralph.lib.mixins.models
 import mptt.fields
+from django.db import migrations, models
+
+import ralph.lib.mixins.fields
+import ralph.lib.mixins.models
+import ralph.networks.fields
+import ralph.networks.models.networks
 
 
 class Migration(migrations.Migration):

@@ -14,11 +14,7 @@ from ralph.admin.mixins import RalphAdmin
 from ralph.admin.views.extra import RalphDetailView
 from ralph.helpers import get_model_view_url_name
 from ralph.lib.transitions.forms import TransitionForm
-from ralph.lib.transitions.models import (
-    Transition,
-    TransitionJob,
-    TransitionModel
-)
+from ralph.lib.transitions.models import Transition, TransitionJob, TransitionModel
 from ralph.lib.transitions.views import RunBulkTransitionView, RunTransitionView
 
 

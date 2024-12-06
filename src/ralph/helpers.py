@@ -3,7 +3,7 @@ import pickle
 from functools import wraps
 
 from django.conf import settings
-from django.core.cache import caches, DEFAULT_CACHE_ALIAS
+from django.core.cache import DEFAULT_CACHE_ALIAS, caches
 from django.http import HttpResponse
 
 logger = logging.getLogger(__name__)

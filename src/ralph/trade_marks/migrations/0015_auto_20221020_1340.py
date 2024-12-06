@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 
 import django
-from django.db import migrations, models
-import ralph.trade_marks.models
 from django.conf import settings
+from django.db import migrations, models
+
 import ralph.lib.mixins.models
+import ralph.trade_marks.models
 
 
 class Migration(migrations.Migration):

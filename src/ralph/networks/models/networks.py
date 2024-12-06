@@ -106,8 +106,8 @@ class NetworkEnvironment(
 
     @property
     def HOSTNAME_MODELS(self):
-        from ralph.data_center.models.virtual import Cluster
         from ralph.data_center.models.physical import DataCenterAsset
+        from ralph.data_center.models.virtual import Cluster
         from ralph.virtual.models import VirtualServer
 
         return (DataCenterAsset, VirtualServer, Cluster, IPAddress)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.permissions import SAFE_METHODS, BasePermission
 
 
 class IsSuperuserOrReadonly(BasePermission):

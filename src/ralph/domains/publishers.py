@@ -8,7 +8,6 @@ from django.dispatch import receiver
 
 from ralph.domains.models import Domain
 
-
 logger = logging.getLogger(__name__)
 
 

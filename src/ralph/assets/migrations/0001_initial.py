@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-from django.conf import settings
-import django.db.models.deletion
-import taggit.managers
 import django.core.validators
+import django.db.models.deletion
 import mptt.fields
-import ralph.lib.mixins.models
+import taggit.managers
+from django.conf import settings
+from django.db import migrations, models
+
 import ralph.lib.mixins.fields
+import ralph.lib.mixins.models
 
 
 class Migration(migrations.Migration):

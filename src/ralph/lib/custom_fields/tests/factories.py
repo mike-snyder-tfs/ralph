@@ -4,7 +4,7 @@ from factory.fuzzy import FuzzyText
 from ralph.lib.custom_fields.models import (
     CustomField,
     CustomFieldTypes,
-    CustomFieldValue
+    CustomFieldValue,
 )
 
 

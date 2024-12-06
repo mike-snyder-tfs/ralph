@@ -6,14 +6,14 @@ from django.test import RequestFactory
 from ralph.lib.transitions.decorators import transition_action
 from ralph.lib.transitions.exceptions import (
     TransitionModelNotFoundError,
-    TransitionNotAllowedError
+    TransitionNotAllowedError,
 )
 from ralph.lib.transitions.models import (
+    Transition,
+    TransitionModel,
     _check_and_get_transition,
     _create_graph_from_actions,
     run_field_transition,
-    Transition,
-    TransitionModel
 )
 from ralph.lib.transitions.tests import TransitionTestCase
 from ralph.tests.models import Foo, Order, OrderStatus

@@ -2,8 +2,9 @@
 from __future__ import unicode_literals
 
 import django
-from django.db import migrations, models
 import mptt.fields
+from django.db import migrations, models
+
 import ralph.lib.mixins.models
 
 

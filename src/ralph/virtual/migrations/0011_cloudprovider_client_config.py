@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations
-import django_extensions.db.fields.json
 import django_cryptography.fields
+import django_extensions.db.fields.json
+from django.db import migrations
 
 
 class Migration(migrations.Migration):

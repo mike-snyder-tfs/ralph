@@ -9,7 +9,7 @@ from django.http import (
     Http404,
     HttpResponseBadRequest,
     HttpResponseForbidden,
-    HttpResponseRedirect
+    HttpResponseRedirect,
 )
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -27,11 +27,11 @@ from ralph.admin.widgets import AutocompleteWidget
 from ralph.lib.permissions.views import PermissionViewMetaClass
 from ralph.lib.transitions.exceptions import TransitionNotAllowedError
 from ralph.lib.transitions.models import (
+    Transition,
+    TransitionJob,
     _check_instances_for_transition,
     _transition_data_validation,
     run_transition,
-    Transition,
-    TransitionJob
 )
 
 

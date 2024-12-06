@@ -6,9 +6,9 @@ from django.test import RequestFactory, TransactionTestCase
 
 from ralph.lib.external_services.models import JobStatus
 from ralph.lib.transitions.models import (
-    run_transition,
     TransitionJob,
-    TransitionsHistory
+    TransitionsHistory,
+    run_transition,
 )
 from ralph.lib.transitions.tests import TransitionTestCaseMixin
 from ralph.tests.models import AsyncOrder, Foo, OrderStatus

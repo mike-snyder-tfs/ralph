@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth.models import Group
 from django.dispatch import receiver
 from django.utils.encoding import force_text
-from django_auth_ldap.backend import _LDAPUser, LDAPSettings, populate_user
+from django_auth_ldap.backend import LDAPSettings, _LDAPUser, populate_user
 
 logger = logging.getLogger(__name__)
 

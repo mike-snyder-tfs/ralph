@@ -13,7 +13,6 @@ from django.core.management.base import BaseCommand
 from ralph.assets.models.assets import Manufacturer
 from ralph.ssl_certificates.models import CertificateType, SSLCertificate
 
-
 DEFAULT_ISSUER_NAME = "CA ENT"
 
 

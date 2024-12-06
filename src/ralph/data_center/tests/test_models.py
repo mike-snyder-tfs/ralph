@@ -9,8 +9,8 @@ from ralph.back_office.models import BackOfficeAsset, BackOfficeAssetStatus
 from ralph.back_office.tests.factories import WarehouseFactory
 from ralph.data_center.models.choices import DataCenterAssetStatus, Orientation
 from ralph.data_center.models.physical import (
-    assign_additional_hostname_choices,
     DataCenterAsset,
+    assign_additional_hostname_choices,
 )
 from ralph.data_center.models.virtual import BaseObjectCluster
 from ralph.data_center.tests.factories import (

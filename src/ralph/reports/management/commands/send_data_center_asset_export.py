@@ -8,7 +8,6 @@ from django.core.validators import EmailValidator
 
 from ralph.reports.resources import DataCenterAssetTextResource
 
-
 logger = logging.getLogger(__name__)
 
 

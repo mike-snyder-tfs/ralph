@@ -5,8 +5,8 @@ from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from rest_framework import serializers, status
-from rest_framework.exceptions import ValidationError as DRFValidationError
 from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import ValidationError as DRFValidationError
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.views import APIView
@@ -20,20 +20,20 @@ from ralph.lib.transitions.api.serializers import (
     TransitionJobSerializer,
     TransitionModelSerializer,
     TransitionSerializer,
-    TransitionsHistorySerializer
+    TransitionsHistorySerializer,
 )
 from ralph.lib.transitions.exceptions import TransitionNotAllowedError
 from ralph.lib.transitions.models import (
-    _check_instances_for_transition,
-    _transition_data_validation,
     Action,
-    run_transition,
     Transition,
     TransitionJob,
     TransitionModel,
-    TransitionsHistory
+    TransitionsHistory,
+    _check_instances_for_transition,
+    _transition_data_validation,
+    run_transition,
 )
-from ralph.lib.transitions.views import collect_actions, NonAtomicView
+from ralph.lib.transitions.views import NonAtomicView, collect_actions
 
 FIELD_MAP = {
     forms.CharField: (serializers.CharField, [

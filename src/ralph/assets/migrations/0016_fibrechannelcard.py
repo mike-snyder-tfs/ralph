@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-import ralph.lib.mixins.fields
 import django.db.models.deletion
+from django.db import migrations, models
+
+import ralph.lib.mixins.fields
 
 
 class Migration(migrations.Migration):

@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 
 import django
 from django.db import migrations, models
-import ralph.lib.transitions.fields
+
 import ralph.lib.mixins.models
+import ralph.lib.transitions.fields
 
 
 class Migration(migrations.Migration):

@@ -2,13 +2,12 @@
 import random
 
 from django.apps import apps
-from django.test import TestCase
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase
 
 from ralph.attachments.models import Attachment, AttachmentItem
-
 
 User = apps.get_model(*settings.AUTH_USER_MODEL.split("."))
 

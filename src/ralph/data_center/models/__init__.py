@@ -20,12 +20,12 @@ from ralph.data_center.models.physical import (
     ServerRoom,
 )
 from ralph.data_center.models.virtual import (
+    VIP,
     BaseObjectCluster,
     Cluster,
     ClusterStatus,
     ClusterType,
     Database,
-    VIP,
     VIPProtocol,
 )
 

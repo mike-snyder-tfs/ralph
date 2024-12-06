@@ -15,7 +15,7 @@ from django.utils.html import escape
 from ralph.admin.helpers import (
     get_field_by_relation_path,
     get_field_title_by_relation_path,
-    getattr_dunder
+    getattr_dunder,
 )
 
 

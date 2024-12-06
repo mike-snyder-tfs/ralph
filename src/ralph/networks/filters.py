@@ -1,13 +1,14 @@
 import ipaddress
 import re
+
 from django.contrib import messages
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from ralph.admin.filters import (
-    ChoicesListFilter,
     SEARCH_OR_SEPARATORS_REGEX,
+    ChoicesListFilter,
     TextListFilter,
 )
 

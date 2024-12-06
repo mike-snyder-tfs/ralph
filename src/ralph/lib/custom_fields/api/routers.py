@@ -40,8 +40,9 @@ class NestedCustomFieldsRouterMixin(object):
         particular model.
         """
         # cyclic imports, meh
-        from .viewsets import ObjectCustomFieldsViewSet
         from ralph.api.viewsets import RalphAPIViewSet
+
+        from .viewsets import ObjectCustomFieldsViewSet
         model = viewset.queryset.model
         custom_fields_related_viewset = type(
             '{}CustomFieldsViewSet'.format(model._meta.object_name),

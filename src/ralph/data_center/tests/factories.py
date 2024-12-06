@@ -23,8 +23,8 @@ from ralph.data_center.models import BaseObjectCluster
 from ralph.data_center.models.choices import ConnectionType
 from ralph.data_center.models.components import DiskShare, DiskShareMount
 from ralph.data_center.models.physical import (
-    Accessory,
     ACCESSORY_DATA,
+    Accessory,
     Connection,
     DataCenter,
     DataCenterAsset,
@@ -33,10 +33,10 @@ from ralph.data_center.models.physical import (
     ServerRoom,
 )
 from ralph.data_center.models.virtual import (
+    VIP,
     Cluster,
     ClusterType,
     Database,
-    VIP,
     VIPProtocol,
 )
 from ralph.security.tests.factories import SecurityScanFactory

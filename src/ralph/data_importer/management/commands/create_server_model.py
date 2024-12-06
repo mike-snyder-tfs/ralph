@@ -2,7 +2,6 @@ from django.core.management import BaseCommand
 
 from ralph.assets.models import AssetModel, Category, Manufacturer, ObjectModelType
 
-
 DEFAULT_MODEL_CATEGORY = "generic server category"
 DEFAULT_MODEL_NAME = "Model A"
 DEFAULT_MODEL_MANUFACTURER = "Generic manufacturer"

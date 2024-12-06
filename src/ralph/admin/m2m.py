@@ -43,7 +43,7 @@ class AuthorAdmin(admin.ModelAdmin):
 from functools import partial
 
 from django import forms
-from django.contrib.admin.utils import flatten_fieldsets, NestedObjects
+from django.contrib.admin.utils import NestedObjects, flatten_fieldsets
 from django.core.exceptions import ValidationError
 from django.db import router
 from django.db.models import ForeignKey

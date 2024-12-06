@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
+
 import django
 from django.db import migrations, models
-import datetime
+
 import ralph.lib.mixins.fields
 
 

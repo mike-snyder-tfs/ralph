@@ -3,7 +3,7 @@ from unittest import mock
 
 from ddt import data, ddt, unpack
 from django.core.exceptions import ValidationError
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 
 from ralph.assets.models import Ethernet
 from ralph.assets.tests.factories import ServiceEnvironmentFactory

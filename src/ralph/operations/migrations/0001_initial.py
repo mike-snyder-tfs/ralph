@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 
 import django
-from django.db import migrations, models
-import ralph.lib.mixins.models
 import mptt.fields
-from django.conf import settings
-import ralph.lib.mixins.fields
 import taggit.managers
+from django.conf import settings
+from django.db import migrations, models
+
+import ralph.lib.mixins.fields
+import ralph.lib.mixins.models
 
 
 class Migration(migrations.Migration):

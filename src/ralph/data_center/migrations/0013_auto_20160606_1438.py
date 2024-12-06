@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-import ralph.lib.transitions.fields
 import datetime
+
+from django.db import migrations, models
+
 import ralph.lib.mixins.fields
+import ralph.lib.transitions.fields
 
 
 class Migration(migrations.Migration):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import re
-from collections import namedtuple, OrderedDict
+from collections import OrderedDict, namedtuple
 from itertools import chain
 
 from dj.choices import Choices, Country

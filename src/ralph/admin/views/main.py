@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.contrib.admin.views.main import ChangeList, SEARCH_VAR
+from django.contrib.admin.views.main import SEARCH_VAR, ChangeList
 
 SEARCH_SCOPE_VAR = "search-scope"
 BULK_EDIT_VAR = "bulk_edit"

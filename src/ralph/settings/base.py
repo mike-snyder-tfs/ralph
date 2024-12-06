@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 import json
 import os
 from collections import ChainMap
+from datetime import datetime
 
 from django.contrib.messages import constants as messages
 from moneyed import CURRENCIES
 
 from ralph.settings.hooks import HOOKS_CONFIGURATION  # noqa: F401
-
 
 SILENCED_SYSTEM_CHECKS = [
     "models.E006",

@@ -1,8 +1,8 @@
 from ralph.assets.models.assets import (
     Asset,
+    AssetHolder,
     AssetLastHostname,
     AssetModel,
-    AssetHolder,
     BudgetInfo,
     BusinessSegment,
     Category,
@@ -22,13 +22,13 @@ from ralph.assets.models.choices import (
     ObjectModelType,
 )
 from ralph.assets.models.components import (
-    ComponentModel,
     Component,
+    ComponentModel,
     Disk,
-    GenericComponent,
     Ethernet,
-    Memory,
     FibreChannelCard,
+    GenericComponent,
+    Memory,
     Processor,
 )
 from ralph.assets.models.configuration import ConfigurationClass, ConfigurationModule

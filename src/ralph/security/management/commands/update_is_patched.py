@@ -7,7 +7,6 @@ from django.db import transaction
 
 from ralph.security.models import SecurityScan
 
-
 logger = logging.getLogger(__name__)
 
 

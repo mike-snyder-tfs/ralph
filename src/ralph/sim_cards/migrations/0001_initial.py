@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-import ralph.lib.mixins.models
+import django.core.validators
 import django.db.models.deletion
 from django.conf import settings
+from django.db import migrations, models
+
+import ralph.lib.mixins.models
 import ralph.lib.transitions.fields
-import django.core.validators
 
 
 class Migration(migrations.Migration):

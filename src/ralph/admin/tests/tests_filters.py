@@ -10,7 +10,6 @@ from ralph.accounts.tests.factories import UserFactory
 from ralph.admin.filters import (
     BooleanListFilter,
     ChoicesListFilter,
-    date_format_to_human,
     DateListFilter,
     IPFilter,
     LiquidatedStatusFilter,
@@ -20,6 +19,7 @@ from ralph.admin.filters import (
     TagsListFilter,
     TextListFilter,
     TreeRelatedAutocompleteFilterWithDescendants,
+    date_format_to_human,
 )
 from ralph.admin.sites import ralph_site
 from ralph.assets.tests.factories import (

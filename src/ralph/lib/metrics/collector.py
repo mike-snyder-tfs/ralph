@@ -2,7 +2,7 @@ import logging
 from contextlib import ContextDecorator
 
 from django.conf import settings
-from statsd import defaults, StatsClient
+from statsd import StatsClient, defaults
 
 logger = logging.getLogger(__name__)
 statsd = None

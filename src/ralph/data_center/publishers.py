@@ -10,8 +10,10 @@ logger = logging.getLogger(__name__)
 
 
 def _get_host_data(instance):
-    from ralph.assets.api.serializers_dchosts import DCHostPhysicalSerializer
-    from ralph.assets.api.serializers_dchosts import DCHostSerializer
+    from ralph.assets.api.serializers_dchosts import (
+        DCHostPhysicalSerializer,
+        DCHostSerializer,
+    )
     from ralph.data_center.models import DataCenterAsset
 
     if isinstance(instance, DataCenterAsset):

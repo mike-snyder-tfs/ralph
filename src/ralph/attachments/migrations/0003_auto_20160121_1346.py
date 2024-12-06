@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
+
 from ralph.admin.helpers import get_content_type_for_model
 
 

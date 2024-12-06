@@ -3,7 +3,6 @@ from datetime import timezone
 
 from dateutil.parser import parse as parse_datetime
 
-
 logger = logging.getLogger(__name__)
 
 

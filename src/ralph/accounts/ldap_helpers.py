@@ -5,7 +5,6 @@ from django.conf import settings
 from django.utils.encoding import force_text
 from django_auth_ldap.config import ActiveDirectoryGroupType
 
-
 logger = logging.getLogger(__name__)
 
 

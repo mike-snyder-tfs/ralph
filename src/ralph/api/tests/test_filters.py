@@ -8,10 +8,10 @@ from django.http import QueryDict
 from rest_framework.test import APIClient, APIRequestFactory
 
 from ralph.api.filters import (
-    ExtendedFiltersBackend,
     FALSE_VALUES,
-    LookupFilterBackend,
     TRUE_VALUES,
+    ExtendedFiltersBackend,
+    LookupFilterBackend,
 )
 from ralph.api.tests.api import Bar, BarViewSet, ManufacturerViewSet, TestManufacturer
 from ralph.tests import RalphTestCase

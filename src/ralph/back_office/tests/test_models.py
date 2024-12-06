@@ -8,7 +8,7 @@ from django.contrib.auth.models import Permission
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core import mail
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import override_settings, RequestFactory, SimpleTestCase
+from django.test import RequestFactory, SimpleTestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
@@ -25,20 +25,20 @@ from ralph.assets.tests.factories import (
 from ralph.attachments.models import Attachment
 from ralph.back_office.helpers import EmailContext
 from ralph.back_office.models import (
-    _check_assets_owner,
     BackOfficeAsset,
     BackOfficeAssetStatus,
+    _check_assets_owner,
 )
 from ralph.back_office.tests.factories import BackOfficeAssetFactory
 from ralph.data_center.models import DataCenterAsset, DataCenterAssetStatus
 from ralph.data_center.tests.factories import RackFactory
 from ralph.lib.external_services import ExternalService
 from ralph.lib.transitions.models import (
-    _check_instances_for_transition,
-    run_field_transition,
     Transition,
     TransitionModel,
     TransitionNotAllowedError,
+    _check_instances_for_transition,
+    run_field_transition,
 )
 from ralph.lib.transitions.tests import TransitionTestCase
 from ralph.licences.tests.factories import LicenceFactory

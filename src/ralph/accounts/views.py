@@ -18,8 +18,8 @@ from ralph.accounts.admin import (
 )
 from ralph.accounts.helpers import (
     ACCEPTANCE_LOAN_TRANSITION_ID,
-    acceptance_transition_exists,
     ACCEPTANCE_TRANSITION_ID,
+    acceptance_transition_exists,
     get_acceptance_url,
     get_assets_to_accept,
     get_assets_to_accept_loan,

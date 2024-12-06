@@ -39,7 +39,7 @@ from ralph.dhcp.models import DHCPEntry, DHCPServer
 from ralph.dns.dnsaas import DNSaaS
 from ralph.dns.forms import RecordType
 from ralph.dns.views import DNSaaSIntegrationNotEnabledError
-from ralph.lib.mixins.forms import ChoiceFieldWithOtherOption, OTHER
+from ralph.lib.mixins.forms import OTHER, ChoiceFieldWithOtherOption
 from ralph.lib.transitions.decorators import transition_action
 from ralph.lib.transitions.exceptions import FreezeAsyncTransition
 from ralph.networks.models import IPAddress, Network, NetworkEnvironment

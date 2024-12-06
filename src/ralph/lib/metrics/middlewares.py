@@ -3,11 +3,12 @@ import logging
 import threading
 import time
 from collections import deque
-from resource import getrusage, RUSAGE_SELF
+from resource import RUSAGE_SELF, getrusage
 
 from django.conf import settings
 from django.db.backends.utils import CursorWrapper
 from django.utils.deprecation import MiddlewareMixin
+
 from .collector import statsd
 
 PROCESSING_TIME_METRIC_PREFIX = getattr(

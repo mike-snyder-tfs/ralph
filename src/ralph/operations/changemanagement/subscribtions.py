@@ -10,7 +10,6 @@ from ralph.assets.models import BaseObject
 from ralph.operations.changemanagement.exceptions import IgnoreOperation
 from ralph.operations.models import Operation, OperationStatus, OperationType
 
-
 logger = logging.getLogger(__name__)
 
 

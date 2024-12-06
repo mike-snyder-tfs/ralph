@@ -15,8 +15,8 @@ from ralph.assets.api.serializers import (
     ServiceEnvironmentSimpleSerializer,
 )
 from ralph.assets.api.views import (
-    base_object_descendant_prefetch_related,
     BaseObjectViewSetMixin,
+    base_object_descendant_prefetch_related,
 )
 from ralph.assets.models import Ethernet
 from ralph.configuration_management.api import SCMInfoSerializer

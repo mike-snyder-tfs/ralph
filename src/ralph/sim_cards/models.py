@@ -1,5 +1,4 @@
 import datetime
-
 from functools import partial
 
 from dj.choices import Choices
@@ -16,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from ralph.assets.models import AssetHolder
 from ralph.attachments.utils import send_transition_attachments_to_user
-from ralph.back_office.models import autocomplete_user, Warehouse
+from ralph.back_office.models import Warehouse, autocomplete_user
 from ralph.lib.hooks import get_hook
 from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, NamedMixin, TimeStampMixin
 from ralph.lib.transitions.conf import get_report_name_for_transition_id

@@ -6,7 +6,7 @@ from django.db.models import Count, Prefetch
 from import_export import fields, resources, widgets
 
 from ralph.accounts.models import Region
-from ralph.assets.models import assets, base, BaseObject, configuration
+from ralph.assets.models import BaseObject, assets, base, configuration
 from ralph.back_office.models import BackOfficeAsset, OfficeInfrastructure, Warehouse
 from ralph.data_center.models import hosts, physical
 from ralph.data_importer.fields import PriceField, ThroughField

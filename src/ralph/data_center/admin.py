@@ -4,7 +4,7 @@ from functools import reduce
 
 from django.conf import settings
 from django.contrib.admin import SimpleListFilter
-from django.contrib.admin.views.main import ChangeList, ORDER_VAR
+from django.contrib.admin.views.main import ORDER_VAR, ChangeList
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Prefetch, Q
 from django.urls import reverse
@@ -56,11 +56,11 @@ from ralph.data_center.models.physical import (
     ServerRoom,
 )
 from ralph.data_center.models.virtual import (
+    VIP,
     BaseObjectCluster,
     Cluster,
     ClusterType,
     Database,
-    VIP,
 )
 from ralph.data_center.views import RelationsView
 from ralph.data_importer import resources

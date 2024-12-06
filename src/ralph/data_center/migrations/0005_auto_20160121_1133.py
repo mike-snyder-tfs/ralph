@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
+
 from ralph.data_center.models.physical import ACCESSORY_DATA
 
 

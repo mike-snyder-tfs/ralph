@@ -18,7 +18,6 @@ from ralph.lib.transitions.decorators import transition_action
 from ralph.lib.transitions.fields import TransitionField
 from ralph.lib.transitions.models import TransitionWorkflowBaseWithPermissions
 
-
 _SELECT_USED_ACCESSORY_QUERY = """
     SELECT COALESCE(SUM({assignment_table}.{quantity_column}), 0)
     FROM {assignment_table}

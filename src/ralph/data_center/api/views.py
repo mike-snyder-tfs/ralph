@@ -5,8 +5,8 @@ from django.db.models import Prefetch
 from ralph.api import RalphAPIViewSet
 from ralph.assets.api.filters import NetworkableObjectFilters
 from ralph.assets.api.views import (
-    base_object_descendant_prefetch_related,
     BaseObjectViewSetMixin,
+    base_object_descendant_prefetch_related,
 )
 from ralph.assets.models import (
     ConfigurationClass,
@@ -30,6 +30,7 @@ from ralph.data_center.api.serializers import (
     VIPSerializer,
 )
 from ralph.data_center.models import (
+    VIP,
     Accessory,
     BaseObjectCluster,
     Cluster,
@@ -40,7 +41,6 @@ from ralph.data_center.models import (
     Rack,
     RackAccessory,
     ServerRoom,
-    VIP,
 )
 from ralph.virtual.models import CloudHost, VirtualServer
 

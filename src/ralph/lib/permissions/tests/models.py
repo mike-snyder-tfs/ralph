@@ -5,7 +5,7 @@ from django.db import models
 from ralph.lib.permissions.models import (
     PermByFieldMixin,
     PermissionsForObjectMixin,
-    user_permission
+    user_permission,
 )
 
 

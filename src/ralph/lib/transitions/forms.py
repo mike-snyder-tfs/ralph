@@ -6,10 +6,10 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from ralph.lib.transitions.models import (
+    TRANSITION_ORIGINAL_STATUS,
     Action,
     Transition,
-    TRANSITION_ORIGINAL_STATUS,
-    TransitionModel
+    TransitionModel,
 )
 
 TRANSITION_TEMPLATES = settings.TRANSITION_TEMPLATES

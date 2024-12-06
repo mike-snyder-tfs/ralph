@@ -1,4 +1,5 @@
 import logging
+
 from django.core.exceptions import SuspiciousOperation
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 

@@ -1,4 +1,4 @@
-from factory import post_generation, Sequence, SubFactory
+from factory import Sequence, SubFactory, post_generation
 from factory.django import DjangoModelFactory
 
 from ralph.accessories.models import Accessory, AccessoryStatus, AccessoryUser

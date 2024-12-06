@@ -13,6 +13,7 @@ from ralph.assets.api.serializers import (
 )
 from ralph.configuration_management.api import SCMInfoSerializer
 from ralph.data_center.models import (
+    VIP,
     Accessory,
     BaseObjectCluster,
     Cluster,
@@ -23,7 +24,6 @@ from ralph.data_center.models import (
     Rack,
     RackAccessory,
     ServerRoom,
-    VIP,
 )
 from ralph.security.api import SecurityScanSerializer
 
@@ -133,8 +133,10 @@ class DataCenterAssetSerializer(ComponentSerializerMixin, AssetSerializer):
     related_hosts = serializers.SerializerMethodField()
 
     def get_related_hosts(self, obj):
-        from ralph.virtual.api import CloudHostSimpleSerializer
-        from ralph.virtual.api import VirtualServerSimpleSerializer
+        from ralph.virtual.api import (
+            CloudHostSimpleSerializer,
+            VirtualServerSimpleSerializer,
+        )
 
         # attributes "virtual_servers", "physical_servers" and "cloud_hosts"
         # are custom prefetches, see DataCenterAssetViewSet

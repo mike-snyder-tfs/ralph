@@ -4,7 +4,7 @@ from unittest.mock import patch
 from ddt import data, ddt, unpack
 from django.core.exceptions import ValidationError
 from django.db.models import F
-from django.test import override_settings, RequestFactory
+from django.test import RequestFactory, override_settings
 
 from ralph.admin.helpers import CastToInteger
 from ralph.assets.models import AssetLastHostname
