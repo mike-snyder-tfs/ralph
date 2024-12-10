@@ -14,7 +14,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, TimeStampMixin
 
-from .fields import CustomFieldsWithInheritanceRelation, CustomFieldValueQuerySet
+from .fields import (
+    CustomFieldsWithInheritanceRelation,
+    CustomFieldValueQuerySet
+)
 
 logger = logging.getLogger(__name__)
 

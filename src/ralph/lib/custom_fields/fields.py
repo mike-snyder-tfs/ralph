@@ -4,8 +4,8 @@ from functools import reduce
 from typing import Any
 
 from django.contrib.contenttypes.fields import (
-    GenericRelation,
     create_generic_related_manager,
+    GenericRelation
 )
 from django.contrib.contenttypes.models import ContentType
 from django.db import models

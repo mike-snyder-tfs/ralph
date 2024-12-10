@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 
 from ralph.assets.models.assets import ServiceEnvironment
-from ralph.data_center.models import VIP, Cluster, ClusterType, VIPProtocol
+from ralph.data_center.models import Cluster, ClusterType, VIP, VIPProtocol
 from ralph.networks.models.networks import Ethernet, IPAddress
 
 logger = logging.getLogger(__name__)

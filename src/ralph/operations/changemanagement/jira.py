@@ -62,5 +62,5 @@ def _safe_load_datetime(event_data, field):
         return (
             parse_datetime(datetime_str).astimezone(timezone.utc).replace(tzinfo=None)
         )
-    except:
+    except:  # noqa
         return None

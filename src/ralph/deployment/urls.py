@@ -1,6 +1,12 @@
 from django.conf.urls import url
 
-from ralph.deployment.views import config, deployment_base, done_ping, files, ipxe
+from ralph.deployment.views import (
+    config,
+    deployment_base,
+    done_ping,
+    files,
+    ipxe
+)
 
 urlpatterns = [
     url(r"^boot.ipxe$", ipxe, name="deployment_ipxe"),

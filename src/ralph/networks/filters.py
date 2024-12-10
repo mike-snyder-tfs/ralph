@@ -7,9 +7,9 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from ralph.admin.filters import (
-    SEARCH_OR_SEPARATORS_REGEX,
     ChoicesListFilter,
-    TextListFilter,
+    SEARCH_OR_SEPARATORS_REGEX,
+    TextListFilter
 )
 
 PRIVATE_NETWORK_CIDRS = [

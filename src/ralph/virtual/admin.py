@@ -15,7 +15,7 @@ from ralph.assets.models.components import Ethernet
 from ralph.assets.views import ComponentsAdminView, RalphDetailViewAdmin
 from ralph.configuration_management.views import (
     SCMCheckInfo,
-    SCMStatusCheckInChangeListMixin,
+    SCMStatusCheckInChangeListMixin
 )
 from ralph.data_center.admin import generate_list_filter_with_common_fields
 from ralph.data_center.models.physical import DataCenterAsset
@@ -35,7 +35,7 @@ from ralph.virtual.models import (
     CloudProject,
     CloudProvider,
     VirtualServer,
-    VirtualServerType,
+    VirtualServerType
 )
 
 if settings.ENABLE_DNSAAS_INTEGRATION:

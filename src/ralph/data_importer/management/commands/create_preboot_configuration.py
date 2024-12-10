@@ -1,7 +1,11 @@
 from django.core.management import BaseCommand
 from django.db import transaction
 
-from ralph.deployment.models import Preboot, PrebootConfiguration, PrebootItemType
+from ralph.deployment.models import (
+    Preboot,
+    PrebootConfiguration,
+    PrebootItemType
+)
 
 
 class Command(BaseCommand):

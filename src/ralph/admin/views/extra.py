@@ -6,10 +6,10 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 
 from ralph.admin.mixins import (
-    RalphAdmin,
-    RalphTemplateView,
     get_inline_media,
     initialize_search_form,
+    RalphAdmin,
+    RalphTemplateView
 )
 from ralph.admin.sites import ralph_site
 from ralph.helpers import get_model_view_url_name

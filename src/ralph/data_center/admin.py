@@ -4,7 +4,7 @@ from functools import reduce
 
 from django.conf import settings
 from django.contrib.admin import SimpleListFilter
-from django.contrib.admin.views.main import ORDER_VAR, ChangeList
+from django.contrib.admin.views.main import ChangeList, ORDER_VAR
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Prefetch, Q
 from django.urls import reverse
@@ -22,14 +22,14 @@ from ralph.admin.filters import (
     RelatedAutocompleteFieldListFilter,
     TagsListFilter,
     TreeRelatedAutocompleteFilterWithDescendants,
-    VulnerabilitesByPatchDeadline,
+    VulnerabilitesByPatchDeadline
 )
 from ralph.admin.helpers import generate_html_link
 from ralph.admin.mixins import (
     BulkEditChangeListMixin,
     RalphAdmin,
     RalphAdminImportExportMixin,
-    RalphTabularInline,
+    RalphTabularInline
 )
 from ralph.admin.views.extra import RalphDetailViewAdmin
 from ralph.admin.views.main import RalphChangeList
@@ -41,7 +41,7 @@ from ralph.assets.views import ComponentsAdminView
 from ralph.attachments.admin import AttachmentsMixin
 from ralph.configuration_management.views import (
     SCMCheckInfo,
-    SCMStatusCheckInChangeListMixin,
+    SCMStatusCheckInChangeListMixin
 )
 from ralph.data_center.forms import DataCenterAssetForm
 from ralph.data_center.models.components import DiskShare, DiskShareMount
@@ -53,14 +53,14 @@ from ralph.data_center.models.physical import (
     DataCenterAsset,
     Rack,
     RackAccessory,
-    ServerRoom,
+    ServerRoom
 )
 from ralph.data_center.models.virtual import (
-    VIP,
     BaseObjectCluster,
     Cluster,
     ClusterType,
     Database,
+    VIP
 )
 from ralph.data_center.views import RelationsView
 from ralph.data_importer import resources

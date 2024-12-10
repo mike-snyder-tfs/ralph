@@ -1,6 +1,9 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from ralph.dashboards.api.serializers import GraphSerializer, GraphSerializerDetail
+from ralph.dashboards.api.serializers import (
+    GraphSerializer,
+    GraphSerializerDetail
+)
 from ralph.dashboards.models import Graph
 
 

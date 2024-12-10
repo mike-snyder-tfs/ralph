@@ -44,8 +44,8 @@ if os.environ.get("USE_REDIS_CACHE"):
     CACHES = {
         "default": {
             "OPTIONS": (
-                json.loads(os.environ.get("REDIS_CACHE_OPTIONS", "{}"))
-                or DEFAULT_CACHE_OPTIONS
+                json.loads(
+                    os.environ.get("REDIS_CACHE_OPTIONS", "{}")) or DEFAULT_CACHE_OPTIONS
             ),
         },
     }

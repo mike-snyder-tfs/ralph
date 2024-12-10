@@ -11,7 +11,11 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 from ralph.assets.models.base import BaseObject
 from ralph.lib.mixins.fields import TicketIdField
-from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, NamedMixin, TaggableMixin
+from ralph.lib.mixins.models import (
+    AdminAbsoluteUrlMixin,
+    NamedMixin,
+    TaggableMixin
+)
 from ralph.lib.polymorphic.fields import PolymorphicManyToManyField
 
 

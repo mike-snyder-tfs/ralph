@@ -7,7 +7,7 @@ from ralph.networks.models import IPAddress
 from ralph.networks.tests.factories import (
     IPAddressFactory,
     NetworkEnvironmentFactory,
-    NetworkFactory,
+    NetworkFactory
 )
 from ralph.tests import RalphTestCase
 from ralph.tests.models import PolymorphicTestModel

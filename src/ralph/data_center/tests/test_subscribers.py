@@ -5,17 +5,17 @@ from copy import deepcopy
 from django.test import TestCase
 
 from ralph.assets.tests.factories import ServiceEnvironmentFactory
-from ralph.data_center.models import VIP, Cluster, VIPProtocol
+from ralph.data_center.models import Cluster, VIP, VIPProtocol
 from ralph.data_center.subscribers import (
     handle_create_vip_event,
     handle_delete_vip_event,
     handle_update_vip_event,
-    validate_vip_event_data,
+    validate_vip_event_data
 )
 from ralph.data_center.tests.factories import (
     ClusterFactory,
     EthernetFactory,
-    VIPFactory,
+    VIPFactory
 )
 from ralph.networks.models.networks import Ethernet, IPAddress
 from ralph.networks.tests.factories import IPAddressFactory

@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_403_FORBIDDEN
 
 from ..models import CustomFieldValue
-from .serializers import CustomFieldValueSaveSerializer, CustomFieldValueSerializer
+from .serializers import (
+    CustomFieldValueSaveSerializer,
+    CustomFieldValueSerializer
+)
 
 
 class ObjectCustomFieldsViewSet(viewsets.ModelViewSet):

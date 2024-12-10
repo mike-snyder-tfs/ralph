@@ -11,17 +11,17 @@ from ralph.lib.transitions.exceptions import (
     FailedActionError,
     FreezeAsyncTransition,
     MoreThanOneStartedActionError,
-    RescheduleAsyncTransitionActionLater,
+    RescheduleAsyncTransitionActionLater
 )
 from ralph.lib.transitions.models import (
-    TransitionJob,
-    TransitionJobAction,
-    TransitionJobActionStatus,
     _check_action_with_instances,
     _check_instances_for_transition,
     _order_actions_by_requirements,
     _post_transition_instance_processing,
     _prepare_action_data,
+    TransitionJob,
+    TransitionJobAction,
+    TransitionJobActionStatus
 )
 
 logger = logging.getLogger(__name__)
@@ -129,7 +129,7 @@ def _perform_async_transition(transition_job):
                         tja=tja,
                         **defaults
                     )
-                except RescheduleAsyncTransitionActionLater as e:
+                except RescheduleAsyncTransitionActionLater:
                     # action is not ready - reschedule this job later and
                     # continue when you left off
                     transition_job.reschedule()

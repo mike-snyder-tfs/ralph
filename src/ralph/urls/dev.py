@@ -3,8 +3,8 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-from ralph.urls import handler404  # noqa
 from ralph.urls import urlpatterns as base_urlpatterns
+from ralph.urls import handler404  # noqa
 
 urlpatterns = base_urlpatterns
 urlpatterns += [

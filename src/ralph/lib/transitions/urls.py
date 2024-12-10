@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from ralph.lib.transitions.views import (
     AsyncBulkTransitionsAwaiterView,
-    KillTransitionJobView,
+    KillTransitionJobView
 )
 
 urlpatterns = [

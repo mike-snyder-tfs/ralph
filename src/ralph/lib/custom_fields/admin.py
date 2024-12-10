@@ -8,7 +8,7 @@ from ralph.admin.mixins import RalphAdmin, RalphGenericTabularInline
 from ralph.lib.custom_fields.forms import (
     CustomFieldValueForm,
     CustomFieldValueFormSet,
-    CustomFieldValueWithClearChildrenForm,
+    CustomFieldValueWithClearChildrenForm
 )
 from ralph.lib.custom_fields.models import CustomField, CustomFieldValue
 from ralph.lib.custom_fields.views import CustomFieldFormfieldView

@@ -10,7 +10,7 @@ from ralph.lib.transitions.api.views import (
     TransitionModelViewSet,
     TransitionsHistoryViewSet,
     TransitionView,
-    TransitionViewSet,
+    TransitionViewSet
 )
 
 router.register(r'transitions', TransitionViewSet)

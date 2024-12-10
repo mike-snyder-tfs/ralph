@@ -15,9 +15,14 @@ from ralph.assets.models.assets import AssetHolder, BudgetInfo, Manufacturer
 from ralph.assets.models.base import BaseObject
 from ralph.assets.models.choices import ObjectModelType
 from ralph.lib.mixins.fields import BaseObjectForeignKey
-from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, NamedMixin, PriceMixin
+from ralph.lib.mixins.models import (
+    AdminAbsoluteUrlMixin,
+    NamedMixin,
+    PriceMixin
+)
 from ralph.lib.permissions.models import PermByFieldMixin
 from ralph.lib.polymorphic.models import PolymorphicQuerySet
+
 
 _SELECT_USED_LICENCES_QUERY = """
     SELECT COALESCE(SUM({assignment_table}.{quantity_column}), 0)

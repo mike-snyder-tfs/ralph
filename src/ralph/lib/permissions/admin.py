@@ -7,7 +7,10 @@ from django.core.exceptions import FieldDoesNotExist, ValidationError
 from django.db.models.query import QuerySet
 
 from ralph.lib.mixins.forms import RequestFormMixin
-from ralph.lib.permissions.models import PermByFieldMixin, PermissionsForObjectMixin
+from ralph.lib.permissions.models import (
+    PermByFieldMixin,
+    PermissionsForObjectMixin
+)
 
 logger = logging.getLogger(__name__)
 

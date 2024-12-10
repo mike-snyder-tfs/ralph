@@ -7,9 +7,14 @@ from ralph.lib.permissions.api import (
     ObjectPermissionsMixin,
     PermissionsForObjectFilter,
     PermissionsPerFieldSerializerMixin,
-    RelatedObjectsPermissionsSerializerMixin,
+    RelatedObjectsPermissionsSerializerMixin
 )
-from ralph.lib.permissions.tests.models import Article, Foo, Library, LongArticle
+from ralph.lib.permissions.tests.models import (
+    Article,
+    Foo,
+    Library,
+    LongArticle
+)
 
 
 class Permission(ObjectPermissionsMixin, permissions.IsAuthenticated):

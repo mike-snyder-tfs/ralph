@@ -1,7 +1,12 @@
 import factory
 from factory.django import DjangoModelFactory
 
-from ralph.dhcp.models import DHCPServer, DNSServer, DNSServerGroup, DNSServerGroupOrder
+from ralph.dhcp.models import (
+    DHCPServer,
+    DNSServer,
+    DNSServerGroup,
+    DNSServerGroupOrder
+)
 
 
 class DNSServerFactory(DjangoModelFactory):

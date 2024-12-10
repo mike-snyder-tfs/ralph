@@ -13,7 +13,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import FieldDoesNotExist, ValidationError
 from django.db import models, transaction
 from django.db.models.base import ModelBase
-from django.db.models.signals import post_delete, post_migrate, post_save, pre_save
+from django.db.models.signals import (
+    post_delete,
+    post_migrate,
+    post_save,
+    pre_save
+)
 from django.dispatch import receiver
 from django.utils.functional import curry
 from django.utils.text import slugify
@@ -21,9 +26,16 @@ from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.fields.json import JSONField
 from reversion import revisions as reversion
 
-from ralph.admin.helpers import get_content_type_for_model, get_field_by_relation_path
+from ralph.admin.helpers import (
+    get_content_type_for_model,
+    get_field_by_relation_path
+)
 from ralph.attachments.models import Attachment
-from ralph.lib.external_services.models import JOB_NOT_ENDED_STATUSES, Job, JobQuerySet
+from ralph.lib.external_services.models import (
+    Job,
+    JOB_NOT_ENDED_STATUSES,
+    JobQuerySet
+)
 from ralph.lib.metrics import statsd
 from ralph.lib.mixins.fields import NullableCharField
 from ralph.lib.mixins.models import AdminAbsoluteUrlMixin, TimeStampMixin
@@ -31,16 +43,16 @@ from ralph.lib.permissions.models import PermissionsBase
 from ralph.lib.transitions.conf import (
     DEFAULT_ASYNC_TRANSITION_SERVICE_NAME,
     TRANSITION_ATTR_TAG,
-    TRANSITION_ORIGINAL_STATUS,
+    TRANSITION_ORIGINAL_STATUS
 )
 from ralph.lib.transitions.exceptions import (
     TransitionModelNotFoundError,
-    TransitionNotAllowedError,
+    TransitionNotAllowedError
 )
 from ralph.lib.transitions.fields import TransitionField
 from ralph.lib.transitions.utils import (
     _compare_instances_types,
-    _sort_graph_topologically,
+    _sort_graph_topologically
 )
 
 _transitions_fields = {}

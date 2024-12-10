@@ -10,6 +10,7 @@ from ralph.accounts.tests.factories import UserFactory
 from ralph.admin.filters import (
     BooleanListFilter,
     ChoicesListFilter,
+    date_format_to_human,
     DateListFilter,
     IPFilter,
     LiquidatedStatusFilter,
@@ -18,17 +19,22 @@ from ralph.admin.filters import (
     RelatedFieldListFilter,
     TagsListFilter,
     TextListFilter,
-    TreeRelatedAutocompleteFilterWithDescendants,
-    date_format_to_human,
+    TreeRelatedAutocompleteFilterWithDescendants
 )
 from ralph.admin.sites import ralph_site
 from ralph.assets.tests.factories import (
     ConfigurationClassFactory,
-    ConfigurationModuleFactory,
+    ConfigurationModuleFactory
 )
 from ralph.data_center.admin import DataCenterAssetAdmin
-from ralph.data_center.models.physical import DataCenterAsset, DataCenterAssetStatus
-from ralph.data_center.tests.factories import DataCenterAssetFactory, RackFactory
+from ralph.data_center.models.physical import (
+    DataCenterAsset,
+    DataCenterAssetStatus
+)
+from ralph.data_center.tests.factories import (
+    DataCenterAssetFactory,
+    RackFactory
+)
 from ralph.supports.admin import SupportAdmin
 from ralph.supports.models import Support
 from ralph.supports.tests.factories import SupportFactory

@@ -17,7 +17,7 @@ from ralph.assets.models import (
     Manufacturer,
     ObjectModelType,
     Service,
-    ServiceEnvironment,
+    ServiceEnvironment
 )
 from ralph.assets.tests.factories import (
     BusinessSegmentFactory,
@@ -30,19 +30,19 @@ from ralph.assets.tests.factories import (
     ManufacturerFactory,
     ProfitCenterFactory,
     ServiceEnvironmentFactory,
-    ServiceFactory,
+    ServiceFactory
 )
 from ralph.back_office.models import BackOfficeAsset
 from ralph.back_office.tests.factories import BackOfficeAssetFactory
 from ralph.configuration_management.models import SCMCheckResult
 from ralph.configuration_management.tests.factories import SCMStatusCheckFactory
-from ralph.data_center.models import VIP, Cluster, Database, DataCenterAsset
+from ralph.data_center.models import Cluster, Database, DataCenterAsset, VIP
 from ralph.data_center.tests.factories import (
     ClusterFactory,
     DatabaseFactory,
     DataCenterAssetFactory,
     DataCenterAssetFullFactory,
-    VIPFactory,
+    VIPFactory
 )
 from ralph.domains.models import Domain
 from ralph.domains.tests.factories import DomainFactory
@@ -60,16 +60,21 @@ from ralph.trade_marks.tests.factories import (
     DesignFactory,
     PatentFactory,
     TradeMarkFactory,
-    UtilityModelFactory,
+    UtilityModelFactory
 )
-from ralph.virtual.models import CloudFlavor, CloudHost, CloudProject, VirtualServer
+from ralph.virtual.models import (
+    CloudFlavor,
+    CloudHost,
+    CloudProject,
+    VirtualServer
+)
 from ralph.virtual.tests.factories import (
     CloudFlavorFactory,
     CloudHostFactory,
     CloudHostFullFactory,
     CloudProjectFactory,
     VirtualServerFactory,
-    VirtualServerFullFactory,
+    VirtualServerFullFactory
 )
 
 

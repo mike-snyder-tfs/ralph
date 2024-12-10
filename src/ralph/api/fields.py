@@ -1,6 +1,11 @@
 from collections import OrderedDict
 
-from rest_framework.fields import ChoiceField, Field, MultipleChoiceField, ReadOnlyField
+from rest_framework.fields import (
+    ChoiceField,
+    Field,
+    MultipleChoiceField,
+    ReadOnlyField
+)
 
 
 class StrField(Field):

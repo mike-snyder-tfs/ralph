@@ -4,7 +4,7 @@ from unittest.mock import patch
 from ddt import data, ddt, unpack
 from django.core.exceptions import ValidationError
 from django.db.models import F
-from django.test import RequestFactory, override_settings
+from django.test import override_settings, RequestFactory
 
 from ralph.admin.helpers import CastToInteger
 from ralph.assets.models import AssetLastHostname
@@ -12,7 +12,7 @@ from ralph.assets.tests.factories import EthernetFactory
 from ralph.data_center.tests.factories import (
     ClusterFactory,
     DataCenterAssetFactory,
-    DataCenterFactory,
+    DataCenterFactory
 )
 from ralph.networks.admin import NetworkAdmin
 from ralph.networks.filters import NetworkClassFilter
@@ -20,7 +20,7 @@ from ralph.networks.models.networks import IPAddress, Network
 from ralph.networks.tests.factories import (
     IPAddressFactory,
     NetworkEnvironmentFactory,
-    NetworkFactory,
+    NetworkFactory
 )
 from ralph.tests import RalphTestCase
 from ralph.virtual.tests.factories import VirtualServerFactory

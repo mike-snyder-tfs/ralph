@@ -11,7 +11,7 @@ from ralph.lib.transitions.models import (
     Transition,
     TransitionJob,
     TransitionModel,
-    TransitionsHistory,
+    TransitionsHistory
 )
 
 

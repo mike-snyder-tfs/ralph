@@ -6,11 +6,18 @@ from django.db.models import Count, Prefetch
 from import_export import fields, resources, widgets
 
 from ralph.accounts.models import Region
-from ralph.assets.models import BaseObject, assets, base, configuration
-from ralph.back_office.models import BackOfficeAsset, OfficeInfrastructure, Warehouse
+from ralph.assets.models import assets, base, BaseObject, configuration
+from ralph.back_office.models import (
+    BackOfficeAsset,
+    OfficeInfrastructure,
+    Warehouse
+)
 from ralph.data_center.models import hosts, physical
 from ralph.data_importer.fields import PriceField, ThroughField
-from ralph.data_importer.mixins import ImportForeignKeyMeta, ImportForeignKeyMixin
+from ralph.data_importer.mixins import (
+    ImportForeignKeyMeta,
+    ImportForeignKeyMixin
+)
 from ralph.data_importer.widgets import (
     AssetServiceEnvWidget,
     AssetServiceUidWidget,
@@ -23,7 +30,7 @@ from ralph.data_importer.widgets import (
     PriceAmountWidget,
     PriceCurrencyWidget,
     UserManyToManyWidget,
-    UserWidget,
+    UserWidget
 )
 from ralph.domains.models.domains import Domain, DomainContract
 from ralph.licences.models import (
@@ -31,7 +38,7 @@ from ralph.licences.models import (
     Licence,
     LicenceType,
     LicenceUser,
-    Software,
+    Software
 )
 from ralph.networks.models import networks
 from ralph.operations.models import Operation, OperationType

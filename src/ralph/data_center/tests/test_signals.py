@@ -4,7 +4,10 @@ from django.test import TestCase
 
 from ralph.data_center.publishers import _get_host_data
 from ralph.data_center.tests.factories import DataCenterAssetFullFactory
-from ralph.virtual.tests.factories import CloudHostFullFactory, VirtualServerFactory
+from ralph.virtual.tests.factories import (
+    CloudHostFullFactory,
+    VirtualServerFactory
+)
 
 
 class TestPublishing(TestCase):

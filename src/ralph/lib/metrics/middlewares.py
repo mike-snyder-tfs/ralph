@@ -3,7 +3,7 @@ import logging
 import threading
 import time
 from collections import deque
-from resource import RUSAGE_SELF, getrusage
+from resource import getrusage, RUSAGE_SELF
 
 from django.conf import settings
 from django.db.backends.utils import CursorWrapper

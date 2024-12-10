@@ -1,20 +1,17 @@
 import ipaddress
 
 from django.contrib.auth import get_user_model
-from django.core.management import BaseCommand, CommandError, call_command
+from django.core.management import BaseCommand, call_command, CommandError
 from django.db import transaction
 
 from ralph.accounts.tests.factories import RegionFactory
 from ralph.assets.models import ConfigurationClass, ConfigurationModule
-from ralph.data_importer.management.commands.create_network import (
-    Command as NetworkCommand,
-)
-from ralph.data_importer.management.commands.create_server_model import (
-    Command as ServerModelCommand,
-)
-from ralph.data_importer.management.commands.create_transitions import (
-    Command as TransitionsCommand,
-)
+from ralph.data_importer.management.commands.create_network import \
+    Command as NetworkCommand
+from ralph.data_importer.management.commands.create_server_model import \
+    Command as ServerModelCommand
+from ralph.data_importer.management.commands.create_transitions import \
+    Command as TransitionsCommand
 
 
 class Command(BaseCommand):

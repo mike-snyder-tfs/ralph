@@ -2,7 +2,7 @@
 import logging
 from collections import defaultdict
 from datetime import datetime, timedelta
-from enum import Enum, auto
+from enum import auto, Enum
 from functools import lru_cache
 
 from django.conf import settings
@@ -14,9 +14,14 @@ from reversion import revisions
 from ralph.data_center.models.physical import DataCenterAsset
 from ralph.lib.openstack.client import (
     RalphIronicClient,
-    RalphOpenStackInfrastructureClient,
+    RalphOpenStackInfrastructureClient
 )
-from ralph.virtual.models import CloudFlavor, CloudHost, CloudProject, CloudProvider
+from ralph.virtual.models import (
+    CloudFlavor,
+    CloudHost,
+    CloudProject,
+    CloudProvider
+)
 
 logger = logging.getLogger(__name__)
 

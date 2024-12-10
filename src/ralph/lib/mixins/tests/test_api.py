@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.exceptions import ValidationError
 
-from ..api import OTHER, ChoiceFieldWithOtherOptionField
+from ..api import ChoiceFieldWithOtherOptionField, OTHER
 
 
 class TestChoiceFieldWithOtherOptionSerializer(TestCase):

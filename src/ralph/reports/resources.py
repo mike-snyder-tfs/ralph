@@ -5,7 +5,11 @@ from import_export.fields import Field
 from import_export.resources import ModelResource
 from import_export.widgets import Widget
 
-from ralph.data_center.models import DataCenterAsset, Orientation, RackOrientation
+from ralph.data_center.models import (
+    DataCenterAsset,
+    Orientation,
+    RackOrientation
+)
 
 
 class ChoiceWidget(Widget):
