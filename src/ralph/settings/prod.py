@@ -68,7 +68,6 @@ if os.environ.get('USE_REDIS_CACHE'):
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         }
 
-
 if bool_from_env('COLLECT_METRICS'):
     COLLECT_METRICS = True
     STATSD_HOST = os.environ.get('STATSD_HOST')
@@ -86,3 +85,16 @@ if bool_from_env('COLLECT_METRICS'):
         STATSD_GRAPHS_PREFIX = os.environ.get(
             'STATSD_GRAPHS_PREFIX', 'ralph.graphs'
         )
+
+if bool_from_env('PROMETHEUS_METRICS_ENABLED', True):
+    PROMETHEUS_METRICS_ENABLED = True
+    PROMETHEUS_EXPORT_MIGRATIONS = False
+    MIDDLEWARE = (
+        'django_prometheus.middleware.PrometheusBeforeMiddleware',
+    ) + MIDDLEWARE
+    MIDDLEWARE = MIDDLEWARE + (
+        'django_prometheus.middleware.PrometheusAfterMiddleware',
+    )
+    INSTALLED_APPS += (
+        'django_prometheus',
+    )
